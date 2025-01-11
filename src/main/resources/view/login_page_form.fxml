@@ -17,7 +17,11 @@
             <Image url="@../img/Login.png" />
          </image>
       </ImageView>
-      <JFXButton layoutX="237.0" layoutY="315.0" prefHeight="26.0" prefWidth="226.0" style="-fx-background-color: #3497f9;" styleClass="button-64" stylesheets="@../css/Button.css" text="Login" textFill="WHITE" />
+      <JFXButton layoutX="237.0" layoutY="309.0" prefHeight="33.0" prefWidth="226.0" style="-fx-background-color: #3497f9;" text="Login" textFill="WHITE">
+         <font>
+            <Font name="System Bold" size="13.0" />
+         </font>
+      </JFXButton>
       <TextField layoutX="237.0" layoutY="221.0" prefHeight="33.0" prefWidth="226.0" promptText="email Address" />
       <Label layoutX="307.0" layoutY="147.0" prefHeight="40.0" prefWidth="86.0" text="Login" textFill="#3497f9">
          <font>
