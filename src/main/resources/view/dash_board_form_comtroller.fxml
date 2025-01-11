@@ -9,7 +9,6 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-
 <AnchorPane prefHeight="452.0" prefWidth="690.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.DashBoardFormController">
    <children>
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="491.0" stroke="WHITE" strokeType="INSIDE" width="164.0" />
@@ -26,6 +25,8 @@
             <Rectangle arcHeight="20.0" arcWidth="20.0" fill="#a4ffbd" height="80.0" layoutX="122.0" layoutY="25.0" stroke="#a4ffbd" strokeType="INSIDE" width="85.0" />
             <Rectangle arcHeight="20.0" arcWidth="20.0" fill="#fff598" height="80.0" layoutX="29.0" layoutY="124.0" stroke="#fff598" strokeType="INSIDE" width="85.0" />
             <Rectangle arcHeight="20.0" arcWidth="20.0" fill="#cca4ff" height="80.0" layoutX="122.0" layoutY="124.0" stroke="#cca4ff" strokeType="INSIDE" width="85.0" />
+            <JFXButton layoutX="122.0" layoutY="287.0" prefHeight="80.0" prefWidth="85.0" style="-fx-background-color: 3497F9;" />
+            <JFXButton layoutX="242.0" layoutY="315.0" style="-fx-background-color: 3497F9;" />
          </children>
       </AnchorPane>
       <ImageView fitHeight="188.0" fitWidth="164.0" layoutY="-40.0" pickOnBounds="true" preserveRatio="true">
