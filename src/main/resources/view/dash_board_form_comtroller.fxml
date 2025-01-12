@@ -12,7 +12,7 @@
 <AnchorPane prefHeight="452.0" prefWidth="690.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.DashBoardFormController">
    <children>
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="491.0" stroke="WHITE" strokeType="INSIDE" width="164.0" />
-      <AnchorPane layoutX="164.0" prefHeight="491.0" prefWidth="694.0" style="-fx-background-color: F0F9FE;">
+      <AnchorPane fx:id="lodeFormController" layoutX="164.0" prefHeight="491.0" prefWidth="694.0" style="-fx-background-color: F0F9FE;">
          <children>
             <TableView layoutX="257.0" layoutY="14.0" prefHeight="200.0" prefWidth="406.0">
               <columns>

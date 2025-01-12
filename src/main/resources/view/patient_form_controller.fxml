@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Rectangle?>
+
+
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.Patient.ViewPatientFormController">
+   <children>
+      <AnchorPane fx:id="lodeFormController" layoutY="5.0" prefHeight="491.0" prefWidth="694.0" style="-fx-background-color: F0F9FE;">
+         <children>
+            <TableView layoutX="257.0" layoutY="14.0" prefHeight="200.0" prefWidth="406.0">
+               <columns>
+                  <TableColumn prefWidth="75.0" text="C1" />
+                  <TableColumn prefWidth="75.0" text="C2" />
+               </columns>
+            </TableView>
+            <Rectangle arcHeight="20.0" arcWidth="20.0" fill="WHITE" height="200.0" layoutX="14.0" layoutY="14.0" stroke="WHITE" strokeType="INSIDE" width="206.0" />
+            <Rectangle arcHeight="20.0" arcWidth="20.0" fill="#a4d2ff" height="80.0" layoutX="29.0" layoutY="25.0" stroke="WHITE" strokeType="INSIDE" width="85.0" />
+            <Rectangle arcHeight="20.0" arcWidth="20.0" fill="#a4ffbd" height="80.0" layoutX="122.0" layoutY="25.0" stroke="#a4ffbd" strokeType="INSIDE" width="85.0" />
+            <Rectangle arcHeight="20.0" arcWidth="20.0" fill="#fff598" height="80.0" layoutX="29.0" layoutY="124.0" stroke="#fff598" strokeType="INSIDE" width="85.0" />
+            <Rectangle arcHeight="20.0" arcWidth="20.0" fill="#cca4ff" height="80.0" layoutX="122.0" layoutY="124.0" stroke="#cca4ff" strokeType="INSIDE" width="85.0" />
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>

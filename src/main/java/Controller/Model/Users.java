@@ -9,12 +9,8 @@ import lombok.ToString;
 @AllArgsConstructor
 @NoArgsConstructor
 @ToString
-public class Patient {
-   private String patient_id;
-   private String name;
-   private int age;
-   private String gender;
-   private String emergence_contact;
-   private String medical_history;
-
+public class Users {
+    private String username;
+    private String email;
+    private String Password;
 }
