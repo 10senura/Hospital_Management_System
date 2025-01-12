@@ -48,14 +48,10 @@ public class LoginPageFormController {
                         resultSet.getString(3),
                         resultSet.getString(4)
                 );
-
-                if (user != null) {
+                if (user!= null) {
                     if (basicTextEncryptor.decrypt(user.getPassword()).equals(txtPassword.getText())) {
-                        System.out.println("Login!");
-
-                        // Open Dashboard
                         Stage stage = new Stage();
-                        stage.setScene(new Scene(FXMLLoader.load(getClass().getResource("/view/dash_board_form_comtroller.fxml"))));
+                        stage.setScene(new Scene(FXMLLoader.load(getClass().getResource("../view/dash_board_form_comtroller.fxml"))));
                         stage.show();
                         ((Stage) txtEmail.getScene().getWindow()).close();
                     } else {
@@ -68,8 +64,9 @@ public class LoginPageFormController {
                 showCustomPopup("Login Failed", "No user found with the given email. Please check and try again.");
             }
         } catch (SQLException e) {
-            showCustomPopup("Database Error", e.getMessage());
+            new Alert(Alert.AlertType.ERROR,e.getMessage()).show();
         }
+
     }
 
     private void showCustomPopup(String title, String message) {
@@ -97,6 +94,7 @@ public class LoginPageFormController {
         try {
             stage.setScene(new Scene(FXMLLoader.load(getClass().getResource("/view/register_page_form.fxml"))));
             stage.show();
+            ((Stage) txtEmail.getScene().getWindow()).close();
         } catch (IOException e) {
             throw new RuntimeException(e);
         }

@@ -1,26 +1,28 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.TableColumn?>
-<?import javafx.scene.control.TableView?>
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.shape.Rectangle?>
-
+<?import javafx.scene.text.Font?>
 
 <AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.Patient.ViewPatientFormController">
    <children>
       <AnchorPane fx:id="lodeFormController" layoutY="5.0" prefHeight="491.0" prefWidth="694.0" style="-fx-background-color: F0F9FE;">
          <children>
-            <TableView layoutX="257.0" layoutY="14.0" prefHeight="200.0" prefWidth="406.0">
-               <columns>
-                  <TableColumn prefWidth="75.0" text="C1" />
-                  <TableColumn prefWidth="75.0" text="C2" />
-               </columns>
-            </TableView>
-            <Rectangle arcHeight="20.0" arcWidth="20.0" fill="WHITE" height="200.0" layoutX="14.0" layoutY="14.0" stroke="WHITE" strokeType="INSIDE" width="206.0" />
-            <Rectangle arcHeight="20.0" arcWidth="20.0" fill="#a4d2ff" height="80.0" layoutX="29.0" layoutY="25.0" stroke="WHITE" strokeType="INSIDE" width="85.0" />
-            <Rectangle arcHeight="20.0" arcWidth="20.0" fill="#a4ffbd" height="80.0" layoutX="122.0" layoutY="25.0" stroke="#a4ffbd" strokeType="INSIDE" width="85.0" />
-            <Rectangle arcHeight="20.0" arcWidth="20.0" fill="#fff598" height="80.0" layoutX="29.0" layoutY="124.0" stroke="#fff598" strokeType="INSIDE" width="85.0" />
-            <Rectangle arcHeight="20.0" arcWidth="20.0" fill="#cca4ff" height="80.0" layoutX="122.0" layoutY="124.0" stroke="#cca4ff" strokeType="INSIDE" width="85.0" />
+            <TextField layoutX="77.0" layoutY="79.0" />
+            <Rectangle arcHeight="20.0" arcWidth="20.0" fill="WHITE" height="420.0" layoutX="30.0" layoutY="39.0" stroke="WHITE" strokeType="INSIDE" width="458.0" />
+            <TextField layoutX="146.0" layoutY="87.0" prefHeight="33.0" prefWidth="226.0" promptText="patient_id" />
+            <TextField layoutX="146.0" layoutY="135.0" prefHeight="33.0" prefWidth="226.0" promptText="name" />
+            <TextField layoutX="146.0" layoutY="179.0" prefHeight="33.0" prefWidth="226.0" promptText="age" />
+            <TextField layoutX="146.0" layoutY="229.0" prefHeight="33.0" prefWidth="226.0" promptText="contact_details" />
+            <TextField layoutX="146.0" layoutY="279.0" prefHeight="33.0" prefWidth="226.0" promptText="emergency_contact" />
+            <TextField layoutX="146.0" layoutY="320.0" prefHeight="33.0" prefWidth="226.0" promptText="medical_history" />
+            <JFXButton layoutX="146.0" layoutY="387.0" onAction="#btnPatientAddOnAction" prefHeight="33.0" prefWidth="226.0" style="-fx-background-color: #3497f9;" text="Add Patient" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="13.0" />
+               </font>
+            </JFXButton>
          </children>
       </AnchorPane>
    </children>

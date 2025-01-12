@@ -48,5 +48,13 @@ public class RegisterPageFormController {
         }
     }
     public void btnLoginFormOnAction(ActionEvent actionEvent) {
+        Stage stage = new Stage();
+        try {
+            stage.setScene(new Scene(FXMLLoader.load(getClass().getResource("/view/login_page_form.fxml"))));
+            stage.show();
+            ((Stage) txtEmail.getScene().getWindow()).close();
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
     }
 }
