@@ -14,13 +14,8 @@ public class DashBoardFormController {
     public AnchorPane lodeFormController;
 
     @FXML
-    void btnDashBoardOnAction(ActionEvent event) throws IOException {
-        URL resource = this.getClass().getResource("/view/patient_form_controller.fxml");
+    void btnDashBoardOnAction(ActionEvent event)  {
 
-        assert resource!=null;
-        Parent lode = FXMLLoader.load(resource);
-        this.lodeFormController.getChildren().clear();
-        this.lodeFormController.getChildren().add(lode);
     }
 
     @FXML
@@ -29,8 +24,13 @@ public class DashBoardFormController {
     }
 
     @FXML
-    void btnPatientsOnAction(ActionEvent event) {
+    void btnPatientsOnAction(ActionEvent event)throws IOException {
+        URL resource = this.getClass().getResource("/view/patient_form_controller.fxml");
 
+        assert resource!=null;
+        Parent lode = FXMLLoader.load(resource);
+        this.lodeFormController.getChildren().clear();
+        this.lodeFormController.getChildren().add(lode);
     }
 
     @FXML
