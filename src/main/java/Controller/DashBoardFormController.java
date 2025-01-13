@@ -46,18 +46,33 @@ public class DashBoardFormController {
     private TableView <?> tblPatientView;
 
     @FXML
-    void btnAppointmentOnAction(ActionEvent event) {
+    void btnAppointmentOnAction(ActionEvent event) throws IOException {
+        URL resource = this.getClass().getResource("/view/appointment_form_controller.fxml");
 
+        assert resource!=null;
+        Parent lode = FXMLLoader.load(resource);
+        this.lodeFormController.getChildren().clear();
+        this.lodeFormController.getChildren().add(lode);
     }
 
     @FXML
     void btnDashBoardOnAction(ActionEvent event) throws IOException {
+        URL resource = this.getClass().getResource("/view/btn_dashboard_view.fxml");
 
+        assert resource!=null;
+        Parent lode = FXMLLoader.load(resource);
+        this.lodeFormController.getChildren().clear();
+        this.lodeFormController.getChildren().add(lode);
     }
 
     @FXML
-    void btnDoctorOnAction(ActionEvent event) {
+    void btnDoctorOnAction(ActionEvent event) throws IOException {
+        URL resource = this.getClass().getResource("/view/doctor_form_controller.fxml");
 
+        assert resource!=null;
+        Parent lode = FXMLLoader.load(resource);
+        this.lodeFormController.getChildren().clear();
+        this.lodeFormController.getChildren().add(lode);
     }
 
     @FXML

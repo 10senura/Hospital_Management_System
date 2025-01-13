@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.chart.BarChart?>
+<?import javafx.scene.chart.CategoryAxis?>
+<?import javafx.scene.chart.NumberAxis?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+
+
+<AnchorPane prefHeight="501.0" prefWidth="699.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.DashboardView">
+   <children>
+      <AnchorPane fx:id="lodeFormController" prefHeight="501.0" prefWidth="699.0" style="-fx-background-color: F0F9FE;">
+         <children>
+            <Rectangle arcHeight="20.0" arcWidth="20.0" fill="WHITE" height="266.0" layoutX="14.0" layoutY="223.0" stroke="WHITE" strokeType="INSIDE" width="670.0" />
+            <TableView fx:id="tblPatientView" layoutX="24.0" layoutY="236.0" prefHeight="243.0" prefWidth="645.0" styleClass="table-row-cell" stylesheets="@../css/Table.css">
+               <columns>
+                  <TableColumn fx:id="clmPatientId" prefWidth="61.99998474121094" text="patient Id" />
+                  <TableColumn fx:id="clmPatientName" prefWidth="96.66668701171875" text="Name" />
+                  <TableColumn fx:id="clmPatientAge" prefWidth="56.6666259765625" text="Age" />
+                  <TableColumn fx:id="clmPatientGender" prefWidth="59.33331298828125" text="Gender" />
+                  <TableColumn fx:id="clmPatientContact" prefWidth="99.33328247070312" text="Contact Details" />
+                  <TableColumn fx:id="clmPatientEmergencyContact" prefWidth="138.66668701171875" text="Emergency Contact" />
+                  <TableColumn fx:id="clmPatientMedicalHistory" prefWidth="147.33331298828125" text="Medical History" />
+               </columns>
+            </TableView>
+            <Rectangle arcHeight="20.0" arcWidth="20.0" fill="WHITE" height="200.0" layoutX="14.0" layoutY="14.0" stroke="WHITE" strokeType="INSIDE" width="206.0" />
+            <Rectangle arcHeight="20.0" arcWidth="20.0" fill="#a4d2ff" height="80.0" layoutX="29.0" layoutY="25.0" stroke="WHITE" strokeType="INSIDE" width="85.0" />
+            <Rectangle arcHeight="20.0" arcWidth="20.0" fill="#a4ffbd" height="80.0" layoutX="122.0" layoutY="25.0" stroke="#a4ffbd" strokeType="INSIDE" width="85.0" />
+            <Rectangle arcHeight="20.0" arcWidth="20.0" fill="#fff598" height="80.0" layoutX="29.0" layoutY="124.0" stroke="#fff598" strokeType="INSIDE" width="85.0" />
+            <Rectangle arcHeight="20.0" arcWidth="20.0" fill="#cca4ff" height="80.0" layoutX="122.0" layoutY="124.0" stroke="#cca4ff" strokeType="INSIDE" width="85.0" />
+            <JFXButton layoutX="32.0" layoutY="51.0" prefHeight="27.0" prefWidth="79.0" style="-fx-background-color: #a4d2ff;" text="Appoinment">
+               <font>
+                  <Font size="11.0" />
+               </font>
+            </JFXButton>
+            <JFXButton layoutX="125.0" layoutY="51.0" prefHeight="27.0" prefWidth="79.0" style="-fx-background-color: #a4ffbd;" text="Patients">
+               <font>
+                  <Font size="11.0" />
+               </font>
+            </JFXButton>
+            <JFXButton layoutX="32.0" layoutY="150.0" prefHeight="27.0" prefWidth="79.0" style="-fx-background-color: #fff598;" text="Doctors">
+               <font>
+                  <Font size="11.0" />
+               </font>
+            </JFXButton>
+            <JFXButton layoutX="124.0" layoutY="150.0" prefHeight="27.0" prefWidth="79.0" style="-fx-background-color: #cca4ff;" text="Billing">
+               <font>
+                  <Font size="11.0" />
+               </font>
+            </JFXButton>
+            <Rectangle arcHeight="20.0" arcWidth="20.0" fill="WHITE" height="200.0" layoutX="241.0" layoutY="14.0" stroke="WHITE" strokeType="INSIDE" width="439.0" />
+            <BarChart layoutX="232.0" layoutY="14.0" prefHeight="210.0" prefWidth="450.0">
+               <xAxis>
+                  <CategoryAxis side="BOTTOM" />
+               </xAxis>
+               <yAxis>
+                  <NumberAxis side="LEFT" />
+               </yAxis>
+            </BarChart>
+         </children>
+      </AnchorPane>
+   </children>
+</AnchorPane>
