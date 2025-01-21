@@ -96,8 +96,13 @@ public class DashBoardFormController {
     }
 
     @FXML
-    void btnSettingOnAction(ActionEvent event) {
+    void btnSettingOnAction(ActionEvent event) throws IOException {
+        URL resource = this.getClass().getResource("/view/patient_form_controller.fxml");
 
+        assert resource!=null;
+        Parent lode = FXMLLoader.load(resource);
+        this.lodeFormController.getChildren().clear();
+        this.lodeFormController.getChildren().add(lode);
     }
 
 }

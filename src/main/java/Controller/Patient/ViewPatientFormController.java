@@ -9,4 +9,6 @@ public class ViewPatientFormController {
 
     public void btnPatientAddOnAction(ActionEvent actionEvent) {
     }
+    public void btnPatientAdOnAction(ActionEvent actionEvent) {
+    }
 }

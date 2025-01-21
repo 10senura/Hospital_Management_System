@@ -30,4 +30,5 @@ public class PatientController implements PatientServices{
     public ObservableList<Patient> getAll() {
         return null;
     }
+
 }
