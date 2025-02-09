@@ -4,21 +4,23 @@
 <?import javafx.scene.chart.BarChart?>
 <?import javafx.scene.chart.CategoryAxis?>
 <?import javafx.scene.chart.NumberAxis?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Line?>
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="452.0" prefWidth="690.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.DashBoardFormController">
+<AnchorPane prefHeight="540.0" prefWidth="858.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.DashBoardFormController">
    <children>
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="491.0" stroke="WHITE" strokeType="INSIDE" width="164.0" />
-      <AnchorPane fx:id="lodeFormController" layoutX="164.0" prefHeight="491.0" prefWidth="694.0" style="-fx-background-color: F0F9FE;">
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="540.0" stroke="WHITE" strokeType="INSIDE" width="164.0" />
+      <AnchorPane fx:id="lodeFormController" layoutX="164.0" prefHeight="540.0" prefWidth="694.0" style="-fx-background-color: F0F9FE;">
          <children>
-            <Rectangle arcHeight="20.0" arcWidth="20.0" fill="WHITE" height="266.0" layoutX="14.0" layoutY="223.0" stroke="WHITE" strokeType="INSIDE" width="670.0" />
-            <TableView fx:id="tblPatientView" layoutX="24.0" layoutY="236.0" prefHeight="243.0" prefWidth="645.0" styleClass="table-row-cell" stylesheets="@../css/Table.css">
+            <Rectangle arcHeight="20.0" arcWidth="20.0" fill="WHITE" height="266.0" layoutX="14.0" layoutY="262.0" stroke="WHITE" strokeType="INSIDE" width="670.0" />
+            <TableView fx:id="tblPatientView" layoutX="24.0" layoutY="275.0" prefHeight="243.0" prefWidth="645.0" styleClass="table-row-cell" stylesheets="@../css/Table.css">
               <columns>
                 <TableColumn fx:id="clmPatientId" prefWidth="61.99998474121094" text="patient Id" />
                 <TableColumn fx:id="clmPatientName" prefWidth="96.66668701171875" text="Name" />
@@ -29,33 +31,33 @@
                   <TableColumn fx:id="clmPatientMedicalHistory" prefWidth="147.33331298828125" text="Medical History" />
               </columns>
             </TableView>
-            <Rectangle arcHeight="20.0" arcWidth="20.0" fill="WHITE" height="200.0" layoutX="14.0" layoutY="14.0" stroke="WHITE" strokeType="INSIDE" width="206.0" />
-            <Rectangle arcHeight="20.0" arcWidth="20.0" fill="#a4d2ff" height="80.0" layoutX="29.0" layoutY="25.0" stroke="WHITE" strokeType="INSIDE" width="85.0" />
-            <Rectangle arcHeight="20.0" arcWidth="20.0" fill="#a4ffbd" height="80.0" layoutX="122.0" layoutY="25.0" stroke="#a4ffbd" strokeType="INSIDE" width="85.0" />
-            <Rectangle arcHeight="20.0" arcWidth="20.0" fill="#fff598" height="80.0" layoutX="29.0" layoutY="124.0" stroke="#fff598" strokeType="INSIDE" width="85.0" />
-            <Rectangle arcHeight="20.0" arcWidth="20.0" fill="#cca4ff" height="80.0" layoutX="122.0" layoutY="124.0" stroke="#cca4ff" strokeType="INSIDE" width="85.0" />
-            <JFXButton layoutX="32.0" layoutY="51.0" prefHeight="27.0" prefWidth="79.0" style="-fx-background-color: #a4d2ff;" text="Appoinment">
+            <Rectangle arcHeight="20.0" arcWidth="20.0" fill="WHITE" height="200.0" layoutX="14.0" layoutY="53.0" stroke="WHITE" strokeType="INSIDE" width="206.0" />
+            <Rectangle arcHeight="20.0" arcWidth="20.0" fill="#a4d2ff" height="80.0" layoutX="29.0" layoutY="64.0" stroke="WHITE" strokeType="INSIDE" width="85.0" />
+            <Rectangle arcHeight="20.0" arcWidth="20.0" fill="#a4ffbd" height="80.0" layoutX="122.0" layoutY="64.0" stroke="#a4ffbd" strokeType="INSIDE" width="85.0" />
+            <Rectangle arcHeight="20.0" arcWidth="20.0" fill="#fff598" height="80.0" layoutX="29.0" layoutY="163.0" stroke="#fff598" strokeType="INSIDE" width="85.0" />
+            <Rectangle arcHeight="20.0" arcWidth="20.0" fill="#cca4ff" height="80.0" layoutX="122.0" layoutY="163.0" stroke="#cca4ff" strokeType="INSIDE" width="85.0" />
+            <JFXButton layoutX="32.0" layoutY="68.0" prefHeight="27.0" prefWidth="79.0" style="-fx-background-color: #a4d2ff;" text="Appoinment">
                <font>
                   <Font size="11.0" />
                </font>
             </JFXButton>
-            <JFXButton layoutX="125.0" layoutY="51.0" prefHeight="27.0" prefWidth="79.0" style="-fx-background-color: #a4ffbd;" text="Patients">
+            <JFXButton layoutX="125.0" layoutY="69.0" prefHeight="27.0" prefWidth="79.0" style="-fx-background-color: #a4ffbd;" text="Patients">
                <font>
                   <Font size="11.0" />
                </font>
             </JFXButton>
-            <JFXButton layoutX="32.0" layoutY="150.0" prefHeight="27.0" prefWidth="79.0" style="-fx-background-color: #fff598;" text="Doctors">
+            <JFXButton layoutX="32.0" layoutY="165.0" prefHeight="27.0" prefWidth="79.0" style="-fx-background-color: #fff598;" text="Doctors">
                <font>
                   <Font size="11.0" />
                </font>
             </JFXButton>
-            <JFXButton layoutX="124.0" layoutY="150.0" prefHeight="27.0" prefWidth="79.0" style="-fx-background-color: #cca4ff;" text="Billing">
+            <JFXButton layoutX="126.0" layoutY="165.0" prefHeight="27.0" prefWidth="79.0" style="-fx-background-color: #cca4ff;" text="Billing">
                <font>
                   <Font size="11.0" />
                </font>
             </JFXButton>
-            <Rectangle arcHeight="20.0" arcWidth="20.0" fill="WHITE" height="200.0" layoutX="241.0" layoutY="14.0" stroke="WHITE" strokeType="INSIDE" width="439.0" />
-            <BarChart layoutX="232.0" layoutY="14.0" prefHeight="210.0" prefWidth="450.0">
+            <Rectangle arcHeight="20.0" arcWidth="20.0" fill="WHITE" height="200.0" layoutX="241.0" layoutY="53.0" stroke="WHITE" strokeType="INSIDE" width="439.0" />
+            <BarChart layoutX="244.0" layoutY="59.0" prefHeight="208.0" prefWidth="433.0">
               <xAxis>
                 <CategoryAxis side="BOTTOM" />
               </xAxis>
@@ -63,6 +65,23 @@
                 <NumberAxis side="LEFT" />
               </yAxis>
             </BarChart>
+            <Label layoutX="17.0" layoutY="16.0" text="DashBoard">
+               <font>
+                  <Font name="System Bold" size="13.0" />
+               </font>
+            </Label>
+            <Label layoutX="567.0" layoutY="10.0" text="Senura indeewara">
+               <font>
+                  <Font name="System Bold" size="13.0" />
+               </font>
+            </Label>
+            <ImageView fitHeight="42.0" fitWidth="34.0" layoutX="527.0" layoutY="9.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../../../../../FX-AddCustomerForm/src/main/resources/img/icon-customer.gif" />
+               </image>
+            </ImageView>
+            <Label layoutX="568.0" layoutY="25.0" prefHeight="19.0" prefWidth="45.0" text="Admin" />
+            <Line endX="492.3333740234375" endY="-3.814697265625E-6" layoutX="185.0" layoutY="45.0" startX="-170.99998474121094" startY="-3.814697265625E-6" stroke="#989494" strokeWidth="0.5" />
          </children>
       </AnchorPane>
       <ImageView fitHeight="188.0" fitWidth="164.0" layoutY="-40.0" pickOnBounds="true" preserveRatio="true">
@@ -80,7 +99,7 @@
             <Font size="13.0" />
          </font>
       </JFXButton>
-      <JFXButton layoutY="435.0" onAction="#btnLogOutOnAction" prefHeight="42.0" prefWidth="164.0" text="   LogOut" />
+      <JFXButton layoutY="478.0" onAction="#btnLogOutOnAction" prefHeight="42.0" prefWidth="164.0" text="   LogOut" />
       <ImageView fitHeight="16.0" fitWidth="19.0" layoutX="30.0" layoutY="186.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../img/icons-appointments.png" />
@@ -106,7 +125,7 @@
             <Image url="@../img/icon-settings.gif" />
          </image>
       </ImageView>
-      <ImageView fitHeight="19.0" fitWidth="19.0" layoutX="29.0" layoutY="447.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="19.0" fitWidth="19.0" layoutX="29.0" layoutY="490.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../img/icon-logout.gif" />
          </image>

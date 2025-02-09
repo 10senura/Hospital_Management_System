@@ -5,7 +5,7 @@ import javafx.collections.ObservableList;
 
 public interface PatientServices {
 
-    boolean AddPatient(Patient patient);
+    boolean addPatient(Patient patient);
 
     boolean UpdatePatient(Patient patient);
 

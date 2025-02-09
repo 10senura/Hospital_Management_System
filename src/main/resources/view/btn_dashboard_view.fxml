@@ -4,64 +4,82 @@
 <?import javafx.scene.chart.BarChart?>
 <?import javafx.scene.chart.CategoryAxis?>
 <?import javafx.scene.chart.NumberAxis?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Line?>
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-
-<AnchorPane prefHeight="501.0" prefWidth="699.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.DashboardView">
+<AnchorPane prefHeight="538.0" prefWidth="682.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controller.DashboardView">
    <children>
-      <AnchorPane fx:id="lodeFormController" prefHeight="501.0" prefWidth="699.0" style="-fx-background-color: F0F9FE;">
-         <children>
-            <Rectangle arcHeight="20.0" arcWidth="20.0" fill="WHITE" height="266.0" layoutX="14.0" layoutY="223.0" stroke="WHITE" strokeType="INSIDE" width="670.0" />
-            <TableView fx:id="tblPatientView" layoutX="24.0" layoutY="236.0" prefHeight="243.0" prefWidth="645.0" styleClass="table-row-cell" stylesheets="@../css/Table.css">
-               <columns>
-                  <TableColumn fx:id="clmPatientId" prefWidth="61.99998474121094" text="patient Id" />
-                  <TableColumn fx:id="clmPatientName" prefWidth="96.66668701171875" text="Name" />
-                  <TableColumn fx:id="clmPatientAge" prefWidth="56.6666259765625" text="Age" />
-                  <TableColumn fx:id="clmPatientGender" prefWidth="59.33331298828125" text="Gender" />
-                  <TableColumn fx:id="clmPatientContact" prefWidth="99.33328247070312" text="Contact Details" />
-                  <TableColumn fx:id="clmPatientEmergencyContact" prefWidth="138.66668701171875" text="Emergency Contact" />
-                  <TableColumn fx:id="clmPatientMedicalHistory" prefWidth="147.33331298828125" text="Medical History" />
-               </columns>
-            </TableView>
-            <Rectangle arcHeight="20.0" arcWidth="20.0" fill="WHITE" height="200.0" layoutX="14.0" layoutY="14.0" stroke="WHITE" strokeType="INSIDE" width="206.0" />
-            <Rectangle arcHeight="20.0" arcWidth="20.0" fill="#a4d2ff" height="80.0" layoutX="29.0" layoutY="25.0" stroke="WHITE" strokeType="INSIDE" width="85.0" />
-            <Rectangle arcHeight="20.0" arcWidth="20.0" fill="#a4ffbd" height="80.0" layoutX="122.0" layoutY="25.0" stroke="#a4ffbd" strokeType="INSIDE" width="85.0" />
-            <Rectangle arcHeight="20.0" arcWidth="20.0" fill="#fff598" height="80.0" layoutX="29.0" layoutY="124.0" stroke="#fff598" strokeType="INSIDE" width="85.0" />
-            <Rectangle arcHeight="20.0" arcWidth="20.0" fill="#cca4ff" height="80.0" layoutX="122.0" layoutY="124.0" stroke="#cca4ff" strokeType="INSIDE" width="85.0" />
-            <JFXButton layoutX="32.0" layoutY="51.0" prefHeight="27.0" prefWidth="79.0" style="-fx-background-color: #a4d2ff;" text="Appoinment">
-               <font>
-                  <Font size="11.0" />
-               </font>
-            </JFXButton>
-            <JFXButton layoutX="125.0" layoutY="51.0" prefHeight="27.0" prefWidth="79.0" style="-fx-background-color: #a4ffbd;" text="Patients">
-               <font>
-                  <Font size="11.0" />
-               </font>
-            </JFXButton>
-            <JFXButton layoutX="32.0" layoutY="150.0" prefHeight="27.0" prefWidth="79.0" style="-fx-background-color: #fff598;" text="Doctors">
-               <font>
-                  <Font size="11.0" />
-               </font>
-            </JFXButton>
-            <JFXButton layoutX="124.0" layoutY="150.0" prefHeight="27.0" prefWidth="79.0" style="-fx-background-color: #cca4ff;" text="Billing">
-               <font>
-                  <Font size="11.0" />
-               </font>
-            </JFXButton>
-            <Rectangle arcHeight="20.0" arcWidth="20.0" fill="WHITE" height="200.0" layoutX="241.0" layoutY="14.0" stroke="WHITE" strokeType="INSIDE" width="439.0" />
-            <BarChart layoutX="232.0" layoutY="14.0" prefHeight="210.0" prefWidth="450.0">
-               <xAxis>
-                  <CategoryAxis side="BOTTOM" />
-               </xAxis>
-               <yAxis>
-                  <NumberAxis side="LEFT" />
-               </yAxis>
-            </BarChart>
-         </children>
-      </AnchorPane>
+      <NumberAxis prefHeight="9.0" prefWidth="67.0" side="LEFT" />
+      <AnchorPane fx:id="lodeFormController" prefHeight="538.0" prefWidth="699.0" style="-fx-background-color: F0F9FE;" />
+      <Rectangle arcHeight="20.0" arcWidth="20.0" fill="WHITE" height="266.0" layoutX="14.0" layoutY="267.0" stroke="WHITE" strokeType="INSIDE" width="670.0" />
+      <TableView fx:id="tblPatientView" layoutX="24.0" layoutY="280.0" prefHeight="243.0" prefWidth="645.0" styleClass="table-row-cell" stylesheets="@../css/Table.css">
+         <columns>
+            <TableColumn fx:id="clmPatientId" prefWidth="61.99998474121094" text="patient Id" />
+            <TableColumn fx:id="clmPatientName" prefWidth="96.66668701171875" text="Name" />
+            <TableColumn fx:id="clmPatientAge" prefWidth="56.6666259765625" text="Age" />
+            <TableColumn fx:id="clmPatientGender" prefWidth="59.33331298828125" text="Gender" />
+            <TableColumn fx:id="clmPatientContact" prefWidth="99.33328247070312" text="Contact Details" />
+            <TableColumn fx:id="clmPatientEmergencyContact" prefWidth="138.66668701171875" text="Emergency Contact" />
+            <TableColumn fx:id="clmPatientMedicalHistory" prefWidth="147.33331298828125" text="Medical History" />
+         </columns>
+      </TableView>
+      <Rectangle arcHeight="20.0" arcWidth="20.0" fill="WHITE" height="200.0" layoutX="14.0" layoutY="58.0" stroke="WHITE" strokeType="INSIDE" width="206.0" />
+      <Rectangle arcHeight="20.0" arcWidth="20.0" fill="#a4d2ff" height="80.0" layoutX="29.0" layoutY="69.0" stroke="WHITE" strokeType="INSIDE" width="85.0" />
+      <Rectangle arcHeight="20.0" arcWidth="20.0" fill="#a4ffbd" height="80.0" layoutX="122.0" layoutY="69.0" stroke="#a4ffbd" strokeType="INSIDE" width="85.0" />
+      <Rectangle arcHeight="20.0" arcWidth="20.0" fill="#fff598" height="80.0" layoutX="29.0" layoutY="168.0" stroke="#fff598" strokeType="INSIDE" width="85.0" />
+      <Rectangle arcHeight="20.0" arcWidth="20.0" fill="#cca4ff" height="80.0" layoutX="122.0" layoutY="168.0" stroke="#cca4ff" strokeType="INSIDE" width="85.0" />
+      <JFXButton layoutX="32.0" layoutY="73.0" prefHeight="27.0" prefWidth="79.0" style="-fx-background-color: #a4d2ff;" text="Appoinment">
+         <font>
+            <Font size="11.0" />
+         </font>
+      </JFXButton>
+      <JFXButton layoutX="125.0" layoutY="74.0" prefHeight="27.0" prefWidth="79.0" style="-fx-background-color: #a4ffbd;" text="Patients">
+         <font>
+            <Font size="11.0" />
+         </font>
+      </JFXButton>
+      <JFXButton layoutX="32.0" layoutY="170.0" prefHeight="27.0" prefWidth="79.0" style="-fx-background-color: #fff598;" text="Doctors">
+         <font>
+            <Font size="11.0" />
+         </font>
+      </JFXButton>
+      <JFXButton layoutX="126.0" layoutY="170.0" prefHeight="27.0" prefWidth="79.0" style="-fx-background-color: #cca4ff;" text="Billing">
+         <font>
+            <Font size="11.0" />
+         </font>
+      </JFXButton>
+      <Rectangle arcHeight="20.0" arcWidth="20.0" fill="WHITE" height="200.0" layoutX="241.0" layoutY="58.0" stroke="WHITE" strokeType="INSIDE" width="439.0" />
+      <Label layoutX="27.0" layoutY="26.0" text="DashBoard">
+         <font>
+            <Font name="System Bold" size="13.0" />
+         </font>
+      </Label>
+      <Label layoutX="577.0" layoutY="20.0" text="Senura indeewara">
+         <font>
+            <Font name="System Bold" size="13.0" />
+         </font>
+      </Label>
+      <ImageView fitHeight="42.0" fitWidth="34.0" layoutX="537.0" layoutY="18.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../../../FX-AddCustomerForm/src/main/resources/img/icon-customer.gif" />
+         </image>
+      </ImageView>
+      <Label layoutX="578.0" layoutY="35.0" prefHeight="19.0" prefWidth="45.0" text="Admin" />
+      <Line endX="492.3333740234375" endY="-3.814697265625E-6" layoutX="195.0" layoutY="55.0" startX="-170.99998474121094" startY="-3.814697265625E-6" stroke="#989494" strokeWidth="0.5" />
+      <BarChart layoutX="244.0" layoutY="64.0" prefHeight="208.0" prefWidth="433.0">
+         <xAxis>
+            <CategoryAxis side="BOTTOM" />
+         </xAxis>
+         <yAxis>
+            <NumberAxis side="LEFT" />
+         </yAxis>
+      </BarChart>
    </children>
 </AnchorPane>
