@@ -8,7 +8,6 @@ import javafx.scene.control.TableView;
 import javafx.scene.layout.AnchorPane;
 
 import javafx.animation.FadeTransition;
-import javafx.event.ActionEvent;
 import javafx.scene.Node;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
@@ -88,5 +87,23 @@ public class MainDashBoardFormController {
         fadeOut.setToValue(0.0);
         fadeOut.setOnFinished(e -> stage.close());
         fadeOut.play();
+    }
+
+    public void btnBillingOnAction(ActionEvent actionEvent) throws IOException {
+        URL resource = this.getClass().getResource("/View/billing_form_controller.fxml");
+
+        assert resource!=null;
+        Parent lode = FXMLLoader.load(resource);
+        this.lodeFormController.getChildren().clear();
+        this.lodeFormController.getChildren().add(lode);
+    }
+
+    public void btnprescriptionOnAction(ActionEvent actionEvent) throws IOException {
+        URL resource = this.getClass().getResource("/View/prescription_form_controller.fxml");
+
+        assert resource!=null;
+        Parent lode = FXMLLoader.load(resource);
+        this.lodeFormController.getChildren().clear();
+        this.lodeFormController.getChildren().add(lode);
     }
 }

@@ -12,7 +12,7 @@ import lombok.ToString;
 public class Billing {
     private String bill_id;
     private String patient_id;
-    private String total_amount;
+    private Double total_amount;
     private String payment_status;
     private String generated_date;
 }
