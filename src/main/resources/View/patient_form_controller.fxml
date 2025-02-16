@@ -34,14 +34,40 @@
                   <Font size="14.0" />
                </font>
             </Label>
+            <Rectangle arcHeight="20.0" arcWidth="20.0" fill="#3497f9" height="42.0" layoutX="113.0" layoutY="82.0" stroke="#3497f9" strokeType="INSIDE" style="-fx-background-color: #3497f9;" width="636.0" />
+            <JFXButton layoutX="698.0" layoutY="86.0" onAction="#btnBackPatientViewOnAction" prefHeight="33.0" prefWidth="47.0" style="-fx-background-color: #fffffff;" text="Back" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="13.0" />
+               </font>
+            </JFXButton>
+            <JFXButton layoutX="115.0" layoutY="86.0" prefHeight="34.0" prefWidth="134.0" style="-fx-background-color: #3497f9;" text="Add Appointment " textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="13.0" />
+               </font>
+            </JFXButton>
+            <JFXButton layoutX="247.0" layoutY="86.0" prefHeight="34.0" prefWidth="149.0" style="-fx-background-color: #3497f9;" text="Search Appointment " textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="13.0" />
+               </font>
+            </JFXButton>
+            <JFXButton layoutX="557.0" layoutY="86.0" prefHeight="34.0" prefWidth="149.0" style="-fx-background-color: #3497f9;" text="Delete Appointment " textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="13.0" />
+               </font>
+            </JFXButton>
+            <JFXButton layoutX="398.0" layoutY="86.0" prefHeight="34.0" prefWidth="158.0" style="-fx-background-color: #3497f9;" text="Update Appointment " textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="13.0" />
+               </font>
+            </JFXButton>
          </children>
       </AnchorPane>
       <TextField layoutX="197.0" layoutY="170.0" prefHeight="27.0" prefWidth="111.0" promptText="patient_id" />
       <TextField layoutX="197.0" layoutY="216.0" prefHeight="27.0" prefWidth="219.0" promptText="name" />
       <TextField layoutX="197.0" layoutY="261.0" prefHeight="27.0" prefWidth="64.0" promptText="age" />
-      <TextField layoutX="197.0" layoutY="310.0" prefHeight="27.0" prefWidth="211.0" promptText="contact_details" />
-      <TextField layoutX="197.0" layoutY="359.0" prefHeight="27.0" prefWidth="211.0" promptText="emergency_contact" />
-      <TextField layoutX="197.0" layoutY="407.0" prefHeight="27.0" prefWidth="285.0" promptText="medical_history" />
+      <TextField layoutX="197.0" layoutY="310.0" prefHeight="27.0" prefWidth="219.0" promptText="contact_details" />
+      <TextField layoutX="197.0" layoutY="359.0" prefHeight="27.0" prefWidth="219.0" promptText="emergency_contact" />
+      <TextField layoutX="197.0" layoutY="407.0" prefHeight="27.0" prefWidth="219.0" promptText="medical_history" />
       <Label layoutX="48.0" layoutY="222.0" text="Name">
          <font>
             <Font size="14.0" />
