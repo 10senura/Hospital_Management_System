@@ -30,4 +30,7 @@ public class PatientFormViewController {
         this.lodeFormController1.getChildren().clear();
         this.lodeFormController1.getChildren().add(lode);
     }
+
+
+
 }

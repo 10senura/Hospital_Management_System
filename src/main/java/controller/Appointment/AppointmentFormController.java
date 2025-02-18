@@ -28,7 +28,7 @@ public class AppointmentFormController {
         assert resource!=null;
         Parent lode = FXMLLoader.load(resource);
         this.lodeFormControllerAppoment.getChildren().clear();
-        this.lodeFormControllerAppoment.getChildren().add(lode);
+        this.lodeFormControllerAppoment .getChildren().add(lode);
     }
 
 }

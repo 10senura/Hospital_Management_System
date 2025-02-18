@@ -13,12 +13,7 @@ public class ViewPatientFormController {
     public AnchorPane lodeFormController1;
 
     public void btnPatientAddOnAction(ActionEvent actionEvent) throws IOException {
-        URL resource = this.getClass().getResource("/View/patient_form_controller.fxml");
 
-        assert resource!=null;
-        Parent lode = FXMLLoader.load(resource);
-        this.lodeFormController.getChildren().clear();
-        this.lodeFormController.getChildren().add(lode);
     }
 
     public void btnBackPatientViewOnAction(ActionEvent actionEvent) throws IOException {

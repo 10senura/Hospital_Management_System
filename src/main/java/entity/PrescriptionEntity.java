@@ -9,12 +9,11 @@ import lombok.ToString;
 @AllArgsConstructor
 @NoArgsConstructor
 @ToString
-public class DoctorEntity {
+public class PrescriptionEntity {
+    private String prescription_id;
+    private String patient_id;
     private String doctor_id;
-    private String name;
-    private String specialty;
-    private String availability;
-    private String qualifications;
-    private String contact_details;
-
+    private String medicine;
+    private String dosage;
+    private String duration;
 }
