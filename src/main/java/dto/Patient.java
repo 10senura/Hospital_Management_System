@@ -12,7 +12,7 @@ import lombok.ToString;
 public class Patient {
     private Integer patient_id;
     private String name;
-    private int age;
+    private Integer age;
     private String gender;
     private String contact_details;
     private String emergence_contact;

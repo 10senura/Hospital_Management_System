@@ -1,9 +1,7 @@
 package service;
 
-
-import service.custom.impl.patientServiceImpl;
 import util.ServiceType;
-
+import service.custom.impl.*;
 
 
 public class ServiceFactory {
@@ -17,7 +15,24 @@ public class ServiceFactory {
     }
 
     public <T extends SuperService> T getServiceType(ServiceType type) {
-
+        switch (type) {
+            case PATIENT:
+                return (T) patientServiceImpl.getInstance();
+            case APPOINTMENT:
+                return (T) AppointmentServiceImpl.getInstance();
+            case DOCTOR:
+                return (T) DoctorServiceImpl.getInstance();
+            case BILLING:
+                return (T) BillingServiceImpl.getInstance();
+            case RESOURCE:
+                return (T) ResourceServiceImpl.getInstance();
+            case LOGIN:
+                return (T) LoginServiceImpl.getInstance();
+            case REGISTER:
+                return (T) RegisterSerivceImpl.getInstance();
+            case PRESCRIPTION:
+                return (T) PrescriptionSeriviceImpl.getInstance();
+        }
         return null;
 
     }
