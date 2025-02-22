@@ -10,65 +10,84 @@ import util.DaoType;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.List;
 
 public class patientServiceImpl implements PatientService {
-
-    public static patientServiceImpl insance;
-
-    PatientDao patientDao = DaoFactory.getInstance().getDaoType(DaoType.PATIENT);
-
+    private static patientServiceImpl patientServiceImpl;
+    private final PatientDao dao;
+    private final ModelMapper modelMapper;
 
     private patientServiceImpl() {
+        dao = DaoFactory.getInstance().getDao(DaoType.PATIENT);
+        modelMapper = new ModelMapper();
     }
 
     public static patientServiceImpl getInstance() {
-        return insance == null ? insance = new patientServiceImpl() : insance;
-
+        if (patientServiceImpl == null) {
+            patientServiceImpl = new patientServiceImpl();
+        }
+        return patientServiceImpl;
     }
 
     @Override
-    public boolean addPatient(Patient patient) throws SQLException {
-
-        PatientEntity patientEntity = new ModelMapper().map(patient, PatientEntity.class);
-        System.out.println(patientEntity.getPatient_id() + patientEntity.getName() + patientEntity.getGender());
-        boolean save = patientDao.save(patientEntity);
-        System.out.println(save);
-        return save;
+    public List<Patient> getPatient() {
+        List<PatientEntity> patientEntities = dao.getAll();
+        List<Patient> patients = new ArrayList<>();
+        for (PatientEntity entity : patientEntities) {
+            patients.add(modelMapper.map(entity, Patient.class));
+        }
+        return patients;
     }
 
     @Override
-    public boolean deletePatient(Integer id) throws SQLException {
-        return patientDao.delete(String.valueOf(id));
-
-    }
+    public boolean addPatient(Patient patient) {
+        try {
+            PatientEntity patientEntity = modelMapper.map(patient, PatientEntity.class);
+            return dao.save(patientEntity);
+        } catch (Exception e) {
+            e.printStackTrace();
+            return false;
+        }    }
 
     @Override
-    public ArrayList<Patient> getAll() {
-        ArrayList<Patient> patientArrayList = new ArrayList<>();
-        patientDao.gettAll().forEach(patientEntity -> patientArrayList.add(new ModelMapper().map(patientEntity, Patient.class)));
-        return patientArrayList;
+    public Patient getPatientBYId(int patient_id) {
+        try {
+            PatientEntity entity = dao.search(String.valueOf(patient_id));
+            if (entity != null) {
+                return modelMapper.map(entity, Patient.class);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
     }
 
     @Override
     public boolean updatePatient(Patient patient) {
-        return patientDao.update(new ModelMapper().map(patient, PatientEntity.class));
-    }
-
-
-    @Override
-    public Patient searchPatient(Integer id) {
-        return new ModelMapper().map(patientDao.search(String.valueOf(id)), Patient.class);
-    }
-
-    public Integer getNextId() {
-        return patientDao.getNextId();
-
-    }
+        try {
+            PatientEntity patientEntity = modelMapper.map(patient, PatientEntity.class);
+            return dao.update(patientEntity);
+        } catch (Exception e) {
+            e.printStackTrace();
+            return false;
+        }    }
 
     @Override
-    public ArrayList<Patient> getPatientsID() {
-        ArrayList<Patient> patientArrayList = new ArrayList<>();
-        patientDao.getPatient_id().forEach(patientEntity -> patientArrayList.add(new ModelMapper().map(patientEntity, Patient.class)));
-        return patientArrayList;
+    public boolean deletePatient(int patient_id) {
+        try {
+            return dao.delete(String.valueOf(patient_id));
+        } catch (Exception e) {
+            e.printStackTrace();
+            return false;
+        }    }
+
+    @Override
+    public List<Patient> getAll() {
+        List<PatientEntity> patientEntities = dao.getAll();
+        List<Patient> patients = new ArrayList<>();
+        for (PatientEntity entity : patientEntities) {
+            patients.add(modelMapper.map(entity, Patient.class));
+        }
+        return patients;
     }
 }

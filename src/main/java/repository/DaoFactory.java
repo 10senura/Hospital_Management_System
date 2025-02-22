@@ -1,33 +1,27 @@
 package repository;
 
-import repository.custom.impl.DoctorDaoImpl;
 import repository.custom.impl.PatientDaoImpl;
 import util.DaoType;
-
-import static util.DaoType.PATIENT;
 
 
 public class DaoFactory {
 
-    private static DaoFactory instance;
-
-    private DaoFactory(){}
+    private static DaoFactory daoFactory;
 
     public static DaoFactory getInstance() {
-        return instance==null?instance=new DaoFactory():instance;
-    }
-
-    public <T extends SuperDao>T getDaoType(DaoType daoType){
-        switch (daoType){
-            case PATIENT: return (T) new PatientDaoImpl();
-            case DOCTOR: return (T) new DoctorDaoImpl();
-            case PRESCRIPTION: return (T) new PrescriptionDaoImpl();
-            case APPOINTMENT: return (T) new AppointmentDaoImpl();
-            case RESOURCE: return (T) new ResourceDaoImpl();
-            case BILLING:return (T) new BillingDaoImpl();
-            case USER:return (T) new UserDaoImpl();
+        if (daoFactory == null) {
+            daoFactory = new DaoFactory();
         }
-        return null;
+        return daoFactory;
     }
 
+    protected DaoFactory() {}
+
+    public <T extends SuperDao> T getDao(DaoType daoType) {
+        switch (daoType) {
+            case PATIENT: return (T) PatientDaoImpl.getInstance();
+
+            default: return null;
+        }
+    }
 }

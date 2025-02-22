@@ -24,73 +24,74 @@
                </font>
             </Label>
             <Line endX="-37.666664123535156" layoutX="143.0" layoutY="129.0" startX="-100.0" stroke="#3497f9" strokeWidth="2.0" />
-            <JFXButton layoutX="636.0" layoutY="440.0" onAction="#btnPatientAddOnAction" prefHeight="33.0" prefWidth="111.0" style="-fx-background-color: #3497f9;" text="Add Patient" textFill="WHITE">
+            <JFXButton layoutX="636.0" layoutY="440.0" onAction="#btnPatientDitalsAddOnAction" prefHeight="33.0" prefWidth="111.0" style="-fx-background-color: #3497f9;" text="Add Patient" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="13.0" />
                </font>
             </JFXButton>
             <Label layoutX="47.0" layoutY="178.0" text="Patient Id">
                <font>
-                  <Font size="14.0" />
+                  <Font name="System Bold" size="14.0" />
                </font>
             </Label>
-            <Rectangle arcHeight="20.0" arcWidth="20.0" fill="#3497f9" height="42.0" layoutX="113.0" layoutY="82.0" stroke="#3497f9" strokeType="INSIDE" style="-fx-background-color: #3497f9;" width="636.0" />
+            <Rectangle arcHeight="20.0" arcWidth="20.0" fill="#3497f9" height="42.0" layoutX="234.0" layoutY="82.0" stroke="#3497f9" strokeType="INSIDE" style="-fx-background-color: #3497f9;" width="515.0" />
             <JFXButton layoutX="698.0" layoutY="86.0" onAction="#btnBackPatientViewOnAction" prefHeight="33.0" prefWidth="47.0" style="-fx-background-color: #fffffff;" text="Back" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="13.0" />
                </font>
             </JFXButton>
-            <JFXButton layoutX="115.0" layoutY="86.0" prefHeight="34.0" prefWidth="134.0" style="-fx-background-color: #3497f9;" text="Add Appointment " textFill="WHITE">
+            <JFXButton layoutX="247.0" layoutY="86.0" onAction="#btnPatientSearchOnAction" prefHeight="34.0" prefWidth="149.0" style="-fx-background-color: #3497f9;" text="Search Patient " textFill="WHITE">
                <font>
                   <Font name="System Bold" size="13.0" />
                </font>
             </JFXButton>
-            <JFXButton layoutX="247.0" layoutY="86.0" prefHeight="34.0" prefWidth="149.0" style="-fx-background-color: #3497f9;" text="Search Appointment " textFill="WHITE">
+            <JFXButton layoutX="557.0" layoutY="86.0" onAction="#btnPatientDeleteOnAction" prefHeight="34.0" prefWidth="149.0" style="-fx-background-color: #3497f9;" text="Delete Patient " textFill="WHITE">
                <font>
                   <Font name="System Bold" size="13.0" />
                </font>
             </JFXButton>
-            <JFXButton layoutX="557.0" layoutY="86.0" prefHeight="34.0" prefWidth="149.0" style="-fx-background-color: #3497f9;" text="Delete Appointment " textFill="WHITE">
+            <JFXButton layoutX="398.0" layoutY="86.0" onAction="#btnPatientUpdateOnAction" prefHeight="34.0" prefWidth="158.0" style="-fx-background-color: #3497f9;" text="Update Patient " textFill="WHITE">
                <font>
                   <Font name="System Bold" size="13.0" />
                </font>
             </JFXButton>
-            <JFXButton layoutX="398.0" layoutY="86.0" prefHeight="34.0" prefWidth="158.0" style="-fx-background-color: #3497f9;" text="Update Appointment " textFill="WHITE">
+            <TextField fx:id="txtpatient_gender" layoutX="195.0" layoutY="300.0" prefHeight="27.0" prefWidth="64.0" promptText="Gender" />
+            <Label layoutX="46.0" layoutY="306.0" text="Gender">
                <font>
-                  <Font name="System Bold" size="13.0" />
+                  <Font name="System Bold" size="14.0" />
                </font>
-            </JFXButton>
+            </Label>
          </children>
       </AnchorPane>
-      <TextField layoutX="197.0" layoutY="170.0" prefHeight="27.0" prefWidth="111.0" promptText="patient_id" />
-      <TextField layoutX="197.0" layoutY="216.0" prefHeight="27.0" prefWidth="219.0" promptText="name" />
-      <TextField layoutX="197.0" layoutY="261.0" prefHeight="27.0" prefWidth="64.0" promptText="age" />
-      <TextField layoutX="197.0" layoutY="310.0" prefHeight="27.0" prefWidth="219.0" promptText="contact_details" />
-      <TextField layoutX="197.0" layoutY="359.0" prefHeight="27.0" prefWidth="219.0" promptText="emergency_contact" />
-      <TextField layoutX="197.0" layoutY="407.0" prefHeight="27.0" prefWidth="219.0" promptText="medical_history" />
+      <TextField fx:id="txtpatient_id" layoutX="197.0" layoutY="170.0" prefHeight="27.0" prefWidth="111.0" promptText="patient_id" />
+      <TextField fx:id="txtpatient_name" layoutX="197.0" layoutY="216.0" prefHeight="27.0" prefWidth="219.0" promptText="name" />
+      <TextField fx:id="txtpatient_age" layoutX="197.0" layoutY="261.0" prefHeight="27.0" prefWidth="64.0" promptText="age" />
+      <TextField fx:id="txtpatient_contact_D" layoutX="197.0" layoutY="339.0" prefHeight="27.0" prefWidth="219.0" promptText="contact_details" />
+      <TextField fx:id="txtpatient_emergency_c" layoutX="197.0" layoutY="388.0" prefHeight="27.0" prefWidth="219.0" promptText="emergency_contact" />
+      <TextField fx:id="txtpatient_medical_h" layoutX="197.0" layoutY="436.0" prefHeight="27.0" prefWidth="219.0" promptText="medical_history" />
       <Label layoutX="48.0" layoutY="222.0" text="Name">
          <font>
-            <Font size="14.0" />
+            <Font name="System Bold" size="14.0" />
          </font>
       </Label>
       <Label layoutX="48.0" layoutY="267.0" text="Age">
          <font>
-            <Font size="14.0" />
+            <Font name="System Bold" size="14.0" />
          </font>
       </Label>
-      <Label layoutX="48.0" layoutY="316.0" text="Contact Details">
+      <Label layoutX="48.0" layoutY="345.0" text="Contact Details">
          <font>
-            <Font size="14.0" />
+            <Font name="System Bold" size="14.0" />
          </font>
       </Label>
-      <Label layoutX="48.0" layoutY="365.0" text="Emergency Contact">
+      <Label layoutX="48.0" layoutY="394.0" text="Emergency Contact">
          <font>
-            <Font size="14.0" />
+            <Font name="System Bold" size="14.0" />
          </font>
       </Label>
-      <Label layoutX="48.0" layoutY="413.0" text="Medical History">
+      <Label layoutX="48.0" layoutY="442.0" text="Medical History">
          <font>
-            <Font size="14.0" />
+            <Font name="System Bold" size="14.0" />
          </font>
       </Label>
       <Label layoutX="17.0" layoutY="23.0" text="Patient Details">

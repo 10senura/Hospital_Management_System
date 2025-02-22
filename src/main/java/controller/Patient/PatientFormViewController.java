@@ -8,11 +8,8 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
-import javafx.scene.control.Alert;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.AnchorPane;
 import service.ServiceFactory;
 import service.custom.PatientService;
@@ -21,38 +18,33 @@ import util.ServiceType;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.SQLException;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
 
 public class PatientFormViewController implements Initializable {
+    @FXML
     public AnchorPane lodeFormController1;
+    @FXML
+    public TableView<Patient> tblPatientView;
+    @FXML
+    public TableColumn<Patient, String> clmPatientId;
+    @FXML
+    public TableColumn<Patient, String> clmPatientName;
+    @FXML
+    public TableColumn<Patient, Integer> clmPatientAge;
+    @FXML
+    public TableColumn<Patient, String> clmPatientGender;
+    @FXML
+    public TableColumn<Patient, String> clmPatientContact;
+    @FXML
+    public TableColumn<Patient, String> clmPatientEmergencyContact;
+    @FXML
+    public TableColumn<Patient, String> clmPatientMedicalHistory;
+    private final PatientService patientService = ServiceFactory.getInstance().getService(ServiceType.PATIENT);
     public AnchorPane lodeFormController;
-    public TableView tblPatientView;
-    public TableColumn clmPatientId;
-    public TableColumn clmPatientName;
-    public TableColumn clmPatientAge;
-    public TableColumn clmPatientGender;
-    public TableColumn clmPatientContact;
-    public TableColumn clmPatientEmergencyContact;
-    public TableColumn clmPatientMedicalHistory;
-
-    PatientService patientService = ServiceFactory.getInstance().getServiceType(ServiceType.PATIENT);
-
-
-    public void btnPatientAddPageOnAction(ActionEvent actionEvent) throws IOException {
-        URL resource = this.getClass().getResource("/View/patient_form_controller.fxml");
-
-        assert resource!=null;
-        Parent lode = FXMLLoader.load(resource);
-        this.lodeFormController1.getChildren().clear();
-        this.lodeFormController1.getChildren().add(lode);
-    }
-
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        loadTable();
         clmPatientId.setCellValueFactory(new PropertyValueFactory<>("patient_id"));
         clmPatientName.setCellValueFactory(new PropertyValueFactory<>("name"));
         clmPatientAge.setCellValueFactory(new PropertyValueFactory<>("age"));
@@ -60,16 +52,38 @@ public class PatientFormViewController implements Initializable {
         clmPatientContact.setCellValueFactory(new PropertyValueFactory<>("contact_details"));
         clmPatientEmergencyContact.setCellValueFactory(new PropertyValueFactory<>("emergence_contact"));
         clmPatientMedicalHistory.setCellValueFactory(new PropertyValueFactory<>("medical_history"));
-
+        loadTable();
     }
-
 
     private void loadTable() {
         tblPatientView.getItems().clear();
-        ObservableList<Patient> observableList= FXCollections.observableArrayList();
-        patientService.getAll().forEach(patient -> observableList.add(patient));
-        tblPatientView.setItems(observableList);
-
+        List<Patient> patients = patientService.getAll();
+        if (patients != null) {
+            ObservableList<Patient> observableList = FXCollections.observableArrayList(patients);
+            tblPatientView.setItems(observableList);
+        } else {
+            new Alert(Alert.AlertType.WARNING, "No patient records found.").show();
+        }
     }
+
+    public void btnPatientAddPageOnAction(ActionEvent actionEvent) {
+        try {
+            loadForm("/View/patient_form_controller.fxml");
+        } catch (IOException e) {
+            e.printStackTrace();
+            new Alert(Alert.AlertType.ERROR, "Failed to load the form: " + e.getMessage()).show();
+        }
+    }
+
+    private void loadForm(String fxmlPath) throws IOException {
+        URL resource = this.getClass().getResource(fxmlPath);
+        if (resource == null) {
+            throw new IOException("FXML file not found: " + fxmlPath);
+        }
+        Parent form = FXMLLoader.load(resource);
+        lodeFormController1.getChildren().clear();
+        lodeFormController1.getChildren().add(form);
+    }
+
 
 }

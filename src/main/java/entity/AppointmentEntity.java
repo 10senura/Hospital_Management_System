@@ -15,7 +15,5 @@ public class AppointmentEntity {
     private String doctor_id;
     private String appointment_date;
     private String appointment_time;
-    private String sdfsdf;
-    private String drgd;
 
 }

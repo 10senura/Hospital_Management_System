@@ -3,37 +3,25 @@ package service;
 import util.ServiceType;
 import service.custom.impl.*;
 
-
 public class ServiceFactory {
-    private static ServiceFactory instance;
-
-    private ServiceFactory() {
-    }
+    private static ServiceFactory serviceFactory;
 
     public static ServiceFactory getInstance() {
-        return instance == null ? instance = new ServiceFactory() : instance;
-    }
-
-    public <T extends SuperService> T getServiceType(ServiceType type) {
-        switch (type) {
-            case PATIENT:
-                return (T) patientServiceImpl.getInstance();
-            case APPOINTMENT:
-                return (T) AppointmentServiceImpl.getInstance();
-            case DOCTOR:
-                return (T) DoctorServiceImpl.getInstance();
-            case BILLING:
-                return (T) BillingServiceImpl.getInstance();
-            case RESOURCE:
-                return (T) ResourceServiceImpl.getInstance();
-            case LOGIN:
-                return (T) LoginServiceImpl.getInstance();
-            case REGISTER:
-                return (T) RegisterSerivceImpl.getInstance();
-            case PRESCRIPTION:
-                return (T) PrescriptionSeriviceImpl.getInstance();
+        if (serviceFactory == null) {
+            serviceFactory = new ServiceFactory();
         }
-        return null;
-
+        return serviceFactory;
     }
+
+    private ServiceFactory() {}
+
+    public <T extends SuperService> T getService(ServiceType serviceType) {
+        switch (serviceType) {
+            case PATIENT: return (T) patientServiceImpl.getInstance();
+            default: return null;
+        }
+    }
+
+
+
 }

@@ -12,19 +12,10 @@ import service.SuperService;
 import java.util.List;
 
 public interface  PatientService extends SuperService {
-
-    boolean addPatient(Patient patient) throws SQLException;
-
-    boolean deletePatient(Integer id) throws SQLException;
-
-    ArrayList<Patient> getAll();
-
+    List<Patient> getPatient();
+    boolean addPatient(Patient patient);
+    Patient getPatientBYId(int patient_id);
     boolean updatePatient(Patient patient);
-
-    Patient searchPatient(Integer id);
-
-    Integer getNextId();
-
-    ArrayList<Patient>getPatientsID();
-
+    boolean deletePatient(int patient_id);
+    List<Patient> getAll();
 }

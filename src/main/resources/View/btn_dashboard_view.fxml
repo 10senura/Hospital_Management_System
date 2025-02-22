@@ -13,7 +13,7 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="lodeFormController" prefHeight="510.0" prefWidth="770.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.dashboard.DashboardViewController">
+<AnchorPane fx:id="lodeFormController1" prefHeight="510.0" prefWidth="770.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.dashboard.DashboardViewController">
    <children>
       <NumberAxis prefHeight="9.0" prefWidth="67.0" side="LEFT" />
       <AnchorPane fx:id="lodeFormController" prefHeight="510.0" prefWidth="770.0" style="-fx-background-color: F0F9FE;">
@@ -53,17 +53,6 @@
                   <NumberAxis side="LEFT" />
                </yAxis>
             </BarChart>
-            <TableView fx:id="tblPatientView" layoutX="25.0" layoutY="344.0" prefHeight="119.0" prefWidth="725.0" styleClass="table-row-cell" stylesheets="@../css/Table.css">
-               <columns>
-                  <TableColumn fx:id="clmPatientId" prefWidth="88.0" text="patient Id" />
-                  <TableColumn fx:id="clmPatientName" prefWidth="126.66665649414062" text="Name" />
-                  <TableColumn fx:id="clmPatientAge" text="Age" />
-                  <TableColumn fx:id="clmPatientGender" prefWidth="104.6666259765625" text="Gender" />
-                  <TableColumn fx:id="clmPatientContact" prefWidth="153.3333740234375" text="Contact Details" />
-                  <TableColumn fx:id="clmPatientEmergencyContact" prefWidth="196.6666259765625" text="Emergency Contact" />
-                  <TableColumn fx:id="clmPatientMedicalHistory" prefWidth="221.3333740234375" text="Medical History" />
-               </columns>
-            </TableView>
             <Label layoutX="648.0" layoutY="14.0" text="Senura indeewara">
                <font>
                   <Font name="System Bold" size="13.0" />
@@ -82,5 +71,16 @@
             </Label>
          </children>
       </AnchorPane>
+      <TableView fx:id="tblPatientView" layoutX="28.0" layoutY="341.0" prefHeight="119.0" prefWidth="723.0" styleClass="table-row-cell" stylesheets="@../css/Table.css">
+         <columns>
+            <TableColumn fx:id="clmPatientId" prefWidth="87.33335876464844" text="patient Id" />
+            <TableColumn fx:id="clmPatientName" prefWidth="84.0" text="Name" />
+            <TableColumn fx:id="clmPatientAge" prefWidth="75.33334350585938" text="Age" />
+            <TableColumn fx:id="clmPatientGender" minWidth="3.33331298828125" prefWidth="97.33334350585938" text="Gender" />
+            <TableColumn fx:id="clmPatientContact" minWidth="0.0" prefWidth="136.66665649414062" text="Contact Details" />
+            <TableColumn fx:id="clmPatientEmergencyContact" prefWidth="138.00003051757812" text="Emergency Contact" />
+            <TableColumn fx:id="clmPatientMedicalHistory" prefWidth="107.33331298828125" text="Medical History" />
+         </columns>
+      </TableView>
    </children>
 </AnchorPane>

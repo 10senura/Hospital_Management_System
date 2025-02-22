@@ -40,6 +40,4 @@ public class AppointmentViewFormController {
         this.AppomentlodeFormController.getChildren().add(lode);
     }
 
-    public void btnPatientPageBackOnAction(ActionEvent actionEvent) {
-    }
 }
