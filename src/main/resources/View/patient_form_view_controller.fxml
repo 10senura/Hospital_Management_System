@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.cells.editors.base.GenericEditableTableCell?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
@@ -44,7 +45,7 @@
                   <Font name="System Bold" size="13.0" />
                </font>
             </Label>
-            <TextField layoutX="42.0" layoutY="139.0" promptText="       Search">
+            <TextField fx:id="txtSearchPatient" layoutX="42.0" layoutY="139.0" promptText="       Search">
                <opaqueInsets>
                   <Insets />
                </opaqueInsets>
@@ -61,11 +62,13 @@
                   <TableColumn fx:id="clmPatientName" prefWidth="100.66667938232422" text="Name" />
                   <TableColumn fx:id="clmPatientAge" prefWidth="59.999969482421875" text="Age" />
                   <TableColumn fx:id="clmPatientGender" prefWidth="60.0" text="Gender" />
-                  <TableColumn fx:id="clmPatientContact" prefWidth="133.3333740234375" text="Contact Details" />
-                  <TableColumn fx:id="clmPatientEmergencyContact" prefWidth="134.0" text="Emergency Contact" />
-                  <TableColumn fx:id="clmPatientMedicalHistory" prefWidth="145.33331298828125" text="Medical History" />
+                  <TableColumn fx:id="clmPatientContact" prefWidth="116.0" text="Contact Details" />
+                  <TableColumn fx:id="clmPatientEmergencyContact" prefWidth="126.66671752929688" text="Emergency Contact" />
+                  <TableColumn fx:id="clmPatientMedicalHistory" prefWidth="107.3333740234375" text="Medical History" />
+                  <TableColumn fx:id="clmPatientDeleteButton" minWidth="0.0" prefWidth="61.99993896484375" />
                </columns>
             </TableView>
+            <GenericEditableTableCell layoutX="420.0" layoutY="23.0" prefHeight="45.0" prefWidth="45.0" />
          </children>
       </AnchorPane>
       <Label layoutX="648.0" layoutY="14.0" text="Senura indeewara">

@@ -42,6 +42,8 @@ public class PatientFormViewController implements Initializable {
     public TableColumn<Patient, String> clmPatientMedicalHistory;
     private final PatientService patientService = ServiceFactory.getInstance().getService(ServiceType.PATIENT);
     public AnchorPane lodeFormController;
+    public TextField txtSearchPatient;
+    public TableColumn clmPatientDeleteButton;
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
@@ -52,8 +54,36 @@ public class PatientFormViewController implements Initializable {
         clmPatientContact.setCellValueFactory(new PropertyValueFactory<>("contact_details"));
         clmPatientEmergencyContact.setCellValueFactory(new PropertyValueFactory<>("emergence_contact"));
         clmPatientMedicalHistory.setCellValueFactory(new PropertyValueFactory<>("medical_history"));
+
+        clmPatientDeleteButton.setCellFactory(param -> new TableCell<Patient, Void>() {
+            private final Button deleteButton = new Button("Delete");
+
+            {
+                deleteButton.setStyle("-fx-background-color: #3497f9; -fx-text-fill: white;");
+                deleteButton.setOnMouseEntered(e -> deleteButton.setStyle("-fx-background-color: #ff1e00; -fx-text-fill: white;"));
+                deleteButton.setOnMouseExited(e -> deleteButton.setStyle("-fx-background-color: #ff1e00; -fx-text-fill: white;"));
+
+                deleteButton.setOnAction(event -> {
+                    Patient patient = getTableRow().getItem();
+                    if (patient != null) {
+                        patientService.deletePatient(String.valueOf(patient));
+                    }
+                });
+            }
+
+            @Override
+            public void updateItem(Void item, boolean empty) {
+                super.updateItem(item, empty);
+                if (empty) {
+                    setGraphic(null);
+                } else {
+                    setGraphic(deleteButton);
+                }
+            }
+        });
         loadTable();
-    }
+       }
+
 
     private void loadTable() {
         tblPatientView.getItems().clear();
@@ -66,13 +96,13 @@ public class PatientFormViewController implements Initializable {
         }
     }
 
-    public void btnPatientAddPageOnAction(ActionEvent actionEvent) {
-        try {
-            loadForm("/View/patient_form_controller.fxml");
-        } catch (IOException e) {
-            e.printStackTrace();
-            new Alert(Alert.AlertType.ERROR, "Failed to load the form: " + e.getMessage()).show();
-        }
+    public void btnPatientAddPageOnAction(ActionEvent actionEvent) throws IOException {
+        URL resource = this.getClass().getResource("/View/patient_form_controller.fxml");
+
+        assert resource!=null;
+        Parent lode = FXMLLoader.load(resource);
+        this.lodeFormController1.getChildren().clear();
+        this.lodeFormController1.getChildren().add(lode);
     }
 
     private void loadForm(String fxmlPath) throws IOException {

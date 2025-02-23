@@ -10,7 +10,7 @@ import lombok.ToString;
 @NoArgsConstructor
 @ToString
 public class DoctorEntity {
-    private String doctor_id;
+    private Integer doctor_id;
     private String name;
     private String specialty;
     private String availability;

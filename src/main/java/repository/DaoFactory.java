@@ -1,5 +1,7 @@
 package repository;
 
+import repository.custom.impl.AppointmentDaoImpl;
+import repository.custom.impl.DoctorDaoImpl;
 import repository.custom.impl.PatientDaoImpl;
 import util.DaoType;
 
@@ -20,7 +22,8 @@ public class DaoFactory {
     public <T extends SuperDao> T getDao(DaoType daoType) {
         switch (daoType) {
             case PATIENT: return (T) PatientDaoImpl.getInstance();
-
+            case DOCTOR: return (T) DoctorDaoImpl.getInstance();
+            case APPOINTMENT: return (T) AppointmentDaoImpl.getInstance();
             default: return null;
         }
     }

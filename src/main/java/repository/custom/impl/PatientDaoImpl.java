@@ -31,15 +31,14 @@ public class PatientDaoImpl implements PatientDao {
 
     @Override
     public boolean save(PatientEntity entity) {
-        String query = "INSERT INTO patient (patient_id, name, age, gender, contact_details, emergence_contact, medical_history) VALUES (?, ?, ?, ?, ?, ?, ?)";
+        String query = "INSERT INTO patient (name, age, gender, contact_details, emergency_contact, medical_history) VALUES (?, ?, ?, ?, ?, ?)";
         try (PreparedStatement statement = DBConnection.getInstance().getConnection().prepareStatement(query)) {
-            statement.setInt(1, entity.getPatient_id());
-            statement.setString(2, entity.getName());
-            statement.setInt(3, entity.getAge());
-            statement.setString(4, entity.getGender());
-            statement.setString(5, entity.getContact_details());
-            statement.setString(6, entity.getEmergence_contact());
-            statement.setString(7, entity.getMedical_history());
+            statement.setString(1, entity.getName());
+            statement.setInt(2, entity.getAge());
+            statement.setString(3, entity.getGender());
+            statement.setString(4, entity.getContact_details());
+            statement.setString(5, entity.getEmergence_contact());
+            statement.setString(6, entity.getMedical_history());
             return statement.executeUpdate() > 0;
         } catch (SQLException e) {
             LOGGER.log(Level.SEVERE, "Error saving patient: " + entity, e);

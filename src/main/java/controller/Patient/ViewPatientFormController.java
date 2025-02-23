@@ -20,6 +20,7 @@ import util.ServiceType;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
 
@@ -35,6 +36,8 @@ public class ViewPatientFormController implements Initializable  {
     public TextField txtpatient_emergency_c;
     public TextField txtpatient_medical_h;
     public TextField txtpatient_gender;
+    public TextField txtSearchPatient;
+
     @FXML
     public TableView<Patient> tblPatientView;
     @FXML
@@ -53,7 +56,7 @@ public class ViewPatientFormController implements Initializable  {
     public TableColumn<Patient, String> clmPatientMedicalHistory;
 
     private final PatientService patientService = ServiceFactory.getInstance().getService(ServiceType.PATIENT);
-
+    List<Patient> patientList = new ArrayList<>();
 
     public void btnBackPatientViewOnAction(ActionEvent actionEvent) throws IOException {
         URL resource = this.getClass().getResource("/View/patient_form_view_controller.fxml");
@@ -65,19 +68,13 @@ public class ViewPatientFormController implements Initializable  {
     }
 
 
-
-    private void loadTable() {
-        tblPatientView.getItems().clear();
-        List<Patient> patients = patientService.getAll();
-        if (patients != null) {
-            ObservableList<Patient> observableList = FXCollections.observableArrayList(patients);
-            tblPatientView.setItems(observableList);
-        } else {
-            new Alert(Alert.AlertType.WARNING, "No patient records found.").show();
-        }
-    }
-
     public void btnPatientSearchOnAction(ActionEvent actionEvent) {
+
+    }
+    private void populateTable() {
+        patientList.clear();
+        patientList.addAll(patientService.getPatient());
+        tblPatientView.setItems(FXCollections.observableList(patientList));
     }
 
     public void btnPatientDeleteOnAction(ActionEvent actionEvent) {
@@ -85,22 +82,41 @@ public class ViewPatientFormController implements Initializable  {
 
 
     public void btnPatientUpdateOnAction(ActionEvent actionEvent) {
+
     }
 
 
     public void btnPatientDitalsAddOnAction(ActionEvent actionEvent) {
+        Patient patient = new Patient(
+                           1,
+                txtpatient_name.getText(),
+                Integer.parseInt(txtpatient_age.getText()),
+                txtpatient_gender.getText(),
+                txtpatient_contact_D.getText(),
+                txtpatient_emergency_c.getText(),
+                txtpatient_medical_h.getText()
+        );
+
+        if(patientService.addPatient(patient)){
+            new Alert(Alert.AlertType.INFORMATION,"Added Successfully!");
+        }else{
+            new Alert(Alert.AlertType.ERROR,"Added Not Successfully ?");
+        }
     }
 
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        clmPatientId.setCellValueFactory(new PropertyValueFactory<>("patient_id"));
-        clmPatientName.setCellValueFactory(new PropertyValueFactory<>("name"));
-        clmPatientAge.setCellValueFactory(new PropertyValueFactory<>("age"));
-        clmPatientGender.setCellValueFactory(new PropertyValueFactory<>("gender"));
-        clmPatientContact.setCellValueFactory(new PropertyValueFactory<>("contact_details"));
-        clmPatientEmergencyContact.setCellValueFactory(new PropertyValueFactory<>("emergence_contact"));
-        clmPatientMedicalHistory.setCellValueFactory(new PropertyValueFactory<>("medical_history"));
-        loadTable();
     }
+
+    private void setTextToValues(Patient newValue) {
+        txtpatient_id.setText(String.valueOf(newValue.getPatient_id()));
+        txtpatient_name.setText(newValue.getName());
+        txtpatient_age.setText(String.valueOf(newValue.getAge()));
+        txtpatient_gender.setText(newValue.getGender());
+        txtpatient_contact_D.setText(newValue.getContact_details());
+        txtpatient_emergency_c.setText(newValue.getEmergence_contact());
+        txtpatient_medical_h.setText(newValue.getMedical_history());
+    }
+
 }

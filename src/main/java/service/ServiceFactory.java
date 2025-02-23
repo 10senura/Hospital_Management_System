@@ -18,6 +18,8 @@ public class ServiceFactory {
     public <T extends SuperService> T getService(ServiceType serviceType) {
         switch (serviceType) {
             case PATIENT: return (T) patientServiceImpl.getInstance();
+            case DOCTOR: return (T) doctorServiceImpl.getInstance();
+            case APPOINTMENT: return (T) appointmentServiceImpl.getInstance();
             default: return null;
         }
     }

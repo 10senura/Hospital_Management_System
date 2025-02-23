@@ -19,33 +19,33 @@
       <AnchorPane fx:id="lodeFormController" prefHeight="510.0" prefWidth="770.0" style="-fx-background-color: F0F9FE;">
          <children>
             <Rectangle arcHeight="20.0" arcWidth="20.0" fill="WHITE" height="156.0" layoutX="14.0" layoutY="329.0" stroke="WHITE" strokeType="INSIDE" width="750.0" />
-            <Rectangle arcHeight="20.0" arcWidth="20.0" fill="WHITE" height="229.0" layoutX="14.0" layoutY="94.0" stroke="WHITE" strokeType="INSIDE" width="253.0" />
-            <Rectangle arcHeight="20.0" arcWidth="20.0" fill="#a4d2ff" height="94.0" layoutX="22.0" layoutY="109.0" stroke="WHITE" strokeType="INSIDE" width="110.0" />
-            <Rectangle arcHeight="20.0" arcWidth="20.0" fill="#a4ffbd" height="94.0" layoutX="146.0" layoutY="212.0" stroke="#a4ffbd" strokeType="INSIDE" width="110.0" />
-            <Rectangle arcHeight="20.0" arcWidth="20.0" fill="#fff598" height="94.0" layoutX="146.0" layoutY="109.0" stroke="#fff598" strokeType="INSIDE" width="110.0" />
-            <Rectangle arcHeight="20.0" arcWidth="20.0" fill="#cca4ff" height="94.0" layoutX="22.0" layoutY="212.0" stroke="#cca4ff" strokeType="INSIDE" width="110.0" />
-            <JFXButton layoutX="26.0" layoutY="117.0" prefHeight="27.0" prefWidth="101.0" style="-fx-background-color: #a4d2ff;" text="Appoinment">
+            <Rectangle arcHeight="20.0" arcWidth="20.0" fill="WHITE" height="229.0" layoutX="14.0" layoutY="70.0" stroke="WHITE" strokeType="INSIDE" width="253.0" />
+            <Rectangle arcHeight="20.0" arcWidth="20.0" fill="#a4d2ff" height="94.0" layoutX="22.0" layoutY="85.0" stroke="WHITE" strokeType="INSIDE" width="110.0" />
+            <Rectangle arcHeight="20.0" arcWidth="20.0" fill="#a4ffbd" height="94.0" layoutX="146.0" layoutY="188.0" stroke="#a4ffbd" strokeType="INSIDE" width="110.0" />
+            <Rectangle arcHeight="20.0" arcWidth="20.0" fill="#fff598" height="94.0" layoutX="146.0" layoutY="85.0" stroke="#fff598" strokeType="INSIDE" width="110.0" />
+            <Rectangle arcHeight="20.0" arcWidth="20.0" fill="#cca4ff" height="94.0" layoutX="22.0" layoutY="188.0" stroke="#cca4ff" strokeType="INSIDE" width="110.0" />
+            <JFXButton layoutX="26.0" layoutY="93.0" prefHeight="27.0" prefWidth="101.0" style="-fx-background-color: #a4d2ff;" text="Appoinment">
                <font>
-                  <Font size="11.0" />
+                  <Font name="System Bold" size="14.0" />
                </font>
             </JFXButton>
-            <JFXButton layoutX="146.0" layoutY="220.0" prefHeight="27.0" prefWidth="109.0" style="-fx-background-color: #a4ffbd;" text="Patients">
+            <JFXButton layoutX="146.0" layoutY="196.0" prefHeight="27.0" prefWidth="109.0" style="-fx-background-color: #a4ffbd;" text="Patients">
                <font>
-                  <Font size="11.0" />
+                  <Font name="System Bold" size="14.0" />
                </font>
             </JFXButton>
-            <JFXButton layoutX="150.0" layoutY="117.0" prefHeight="27.0" prefWidth="101.0" style="-fx-background-color: #fff598;" text="Doctors">
+            <JFXButton layoutX="150.0" layoutY="93.0" prefHeight="27.0" prefWidth="101.0" style="-fx-background-color: #fff598;" text="Doctors">
                <font>
-                  <Font size="11.0" />
+                  <Font name="System Bold" size="14.0" />
                </font>
             </JFXButton>
-            <JFXButton layoutX="22.0" layoutY="220.0" prefHeight="27.0" prefWidth="109.0" style="-fx-background-color: #cca4ff;" text="Billing">
+            <JFXButton layoutX="22.0" layoutY="196.0" prefHeight="27.0" prefWidth="109.0" style="-fx-background-color: #cca4ff;" text="Billing">
                <font>
-                  <Font size="11.0" />
+                  <Font name="System Bold" size="14.0" />
                </font>
             </JFXButton>
-            <Rectangle arcHeight="20.0" arcWidth="20.0" fill="WHITE" height="229.0" layoutX="296.0" layoutY="94.0" stroke="WHITE" strokeType="INSIDE" width="453.0" />
-            <BarChart layoutX="288.0" layoutY="114.0" prefHeight="208.0" prefWidth="453.0">
+            <Rectangle arcHeight="20.0" arcWidth="20.0" fill="WHITE" height="229.0" layoutX="296.0" layoutY="70.0" stroke="WHITE" strokeType="INSIDE" width="453.0" />
+            <BarChart layoutX="288.0" layoutY="90.0" prefHeight="208.0" prefWidth="453.0">
                <xAxis>
                   <CategoryAxis side="BOTTOM" />
                </xAxis>
@@ -69,6 +69,22 @@
                   <Font name="System Bold" size="15.0" />
                </font>
             </Label>
+            <Label fx:id="lblAppoinement" layoutX="32.0" layoutY="117.0" prefHeight="53.0" prefWidth="70.0" text="1">
+               <font>
+                  <Font name="System Bold" size="32.0" />
+               </font></Label>
+            <Label fx:id="lblBilling" layoutX="33.0" layoutY="220.0" prefHeight="47.0" prefWidth="61.0" text="3">
+               <font>
+                  <Font name="System Bold" size="32.0" />
+               </font></Label>
+            <Label fx:id="lblPatient" layoutX="155.0" layoutY="220.0" prefHeight="47.0" prefWidth="61.0" text="4">
+               <font>
+                  <Font name="System Bold" size="32.0" />
+               </font></Label>
+            <Label fx:id="lblDoctor" layoutX="155.0" layoutY="117.0" prefHeight="47.0" prefWidth="67.0" text="2">
+               <font>
+                  <Font name="System Bold" size="32.0" />
+               </font></Label>
          </children>
       </AnchorPane>
       <TableView fx:id="tblPatientView" layoutX="28.0" layoutY="341.0" prefHeight="119.0" prefWidth="723.0" styleClass="table-row-cell" stylesheets="@../css/Table.css">

@@ -1,7 +1,5 @@
 package repository;
 
-import java.sql.SQLException;
-import java.util.ArrayList;
 import java.util.List;
 
 public interface  CrudDao<T, ID>extends SuperDao {

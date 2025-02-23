@@ -113,8 +113,9 @@
             <TableColumn fx:id="clmappointment_id" prefWidth="123.33333969116211" text="Appointment Id" />
             <TableColumn fx:id="clmpatient_id" prefWidth="92.00004577636719" text="Patient Id" />
             <TableColumn fx:id="clmdoctor_id" prefWidth="128.00003051757812" text="Doctor Id" />
-            <TableColumn fx:id="clmappointment_time" prefWidth="189.99990844726562" text="Appointment Time" />
-            <TableColumn fx:id="clmappointment_date" prefWidth="170.0" text="Appointment Date" />
+            <TableColumn fx:id="clmappointment_time" prefWidth="163.33340454101562" text="Appointment Time" />
+            <TableColumn fx:id="clmappointment_date" prefWidth="113.33331298828125" text="Appointment Date" />
+            <TableColumn fx:id="clmAppoinementDeleteButton" minWidth="0.0" prefWidth="79.33331298828125" />
          </columns>
       </TableView>
       <Label layoutX="658.0" layoutY="24.0" text="Senura indeewara">

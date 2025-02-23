@@ -8,7 +8,6 @@ import repository.custom.PatientDao;
 import service.custom.PatientService;
 import util.DaoType;
 
-import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -63,6 +62,11 @@ public class patientServiceImpl implements PatientService {
     }
 
     @Override
+    public Patient getSearchPatient(int patient_id) {
+        return null;
+    }
+
+    @Override
     public boolean updatePatient(Patient patient) {
         try {
             PatientEntity patientEntity = modelMapper.map(patient, PatientEntity.class);
@@ -73,13 +77,14 @@ public class patientServiceImpl implements PatientService {
         }    }
 
     @Override
-    public boolean deletePatient(int patient_id) {
+    public boolean deletePatient(String patient_id) {
         try {
             return dao.delete(String.valueOf(patient_id));
         } catch (Exception e) {
             e.printStackTrace();
             return false;
-        }    }
+        }
+    }
 
     @Override
     public List<Patient> getAll() {

@@ -1,7 +1,5 @@
 package db;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.SQLException;
+import java.sql.*;
 import java.util.ArrayList;
 
 
@@ -25,5 +23,18 @@ public class DBConnection {
             return instance= new DBConnection();
         }
         return instance;
+    }
+
+    private int getCount(Connection connection, String query) {
+        try {
+            PreparedStatement preparedStatement = connection.prepareStatement(query);
+            ResultSet resultSet = preparedStatement.executeQuery();
+            if (resultSet.next()) {
+                return resultSet.getInt(1);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return 0;
     }
 }
