@@ -3,11 +3,10 @@ package repository.custom.impl;
 import db.DBConnection;
 import entity.AppointmentEntity;
 import entity.DoctorEntity;
+import entity.PatientEntity;
 import repository.custom.AppointmentDao;
 
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
@@ -35,22 +34,75 @@ public class AppointmentDaoImpl implements AppointmentDao {
 
     @Override
     public boolean save(AppointmentEntity entity) {
-        return false;
+        String query = "INSERT INTO appointment (patient_id, doctor_id, appointment_date, appointment_time) VALUES (?, ?, ?, ?)";
+        try (PreparedStatement statement = DBConnection.getInstance().getConnection().prepareStatement(query, Statement.RETURN_GENERATED_KEYS)){
+            statement.setInt(1, entity.getPatient_id());
+            statement.setInt(2, entity.getDoctor_id());
+            statement.setDate(3, Date.valueOf(entity.getAppointment_date()));
+            statement.setTime(4, Time.valueOf(entity.getAppointment_time().toLocalTime()));
+
+            boolean result = statement.executeUpdate() > 0;
+
+            try (ResultSet generatedKeys = statement.getGeneratedKeys()) {
+                if (generatedKeys.next()) {
+                    entity.setAppointment_id(generatedKeys.getInt(1));
+                }
+            }
+            return result;
+        } catch (SQLException e) {
+            LOGGER.log(Level.SEVERE, "Error saving appointment: " + entity, e);
+            return false;
+        }
     }
 
     @Override
-    public AppointmentEntity search(String s) {
+    public AppointmentEntity search(String id) {
+        String query = "SELECT * FROM appointment WHERE appointment_id = ?";
+        try (PreparedStatement statement = DBConnection.getInstance().getConnection().prepareStatement(query)) {
+            statement.setInt(1, Integer.parseInt(id));
+            try (ResultSet resultSet = statement.executeQuery()) {
+                if (resultSet.next()) {
+                    return new AppointmentEntity(
+                            resultSet.getInt("appointment_id"),
+                            resultSet.getInt("patient_id"),
+                            resultSet.getInt("doctor_id"),
+                            resultSet.getDate("appointment_date").toLocalDate(),
+                            resultSet.getTime("appointment_time")
+                    );
+                }
+            }
+        } catch (SQLException e) {
+            LOGGER.log(Level.SEVERE, "Error searching appointment with ID: " + id, e);
+        }
         return null;
     }
 
     @Override
-    public boolean delete(String s) {
-        return false;
+    public boolean delete(String id) {
+        String query = "DELETE FROM appointment WHERE appointment_id = ?";
+        try (PreparedStatement statement = DBConnection.getInstance().getConnection().prepareStatement(query)) {
+            statement.setInt(1, Integer.parseInt(id));
+            return statement.executeUpdate() > 0;
+        } catch (SQLException e) {
+            LOGGER.log(Level.SEVERE, "Error deleting appointment with ID: " + id, e);
+            return false;
+        }
     }
 
     @Override
     public boolean update(AppointmentEntity entity) {
-        return false;
+        String query = "UPDATE appointment SET patient_id = ?, doctor_id = ?, appointment_date = ?, appointment_time = ? WHERE appointment_id = ?";
+        try (PreparedStatement statement = DBConnection.getInstance().getConnection().prepareStatement(query)) {
+            statement.setInt(1, entity.getPatient_id());
+            statement.setInt(2, entity.getDoctor_id());
+            statement.setDate(3, Date.valueOf(entity.getAppointment_date()));
+            statement.setTime(4, Time.valueOf(entity.getAppointment_time().toLocalTime()));
+            return statement.executeUpdate() > 0;
+        } catch (SQLException e) {
+            LOGGER.log(Level.SEVERE, "Error updating appointment: " + entity, e);
+            return false;
+
+        }
     }
 
     @Override
@@ -64,8 +116,8 @@ public class AppointmentDaoImpl implements AppointmentDao {
                         resultSet.getInt("appointment_id"),
                         resultSet.getInt("patient_id"),
                         resultSet.getInt("doctor_id"),
-                        resultSet.getString("appointment_date"),
-                        resultSet.getString("appointment_time")
+                        resultSet.getDate("appointment_date").toLocalDate(),
+                        resultSet.getTime("appointment_time")
                 ));
             }
         } catch (SQLException e) {

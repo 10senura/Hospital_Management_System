@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXComboBox?>
 <?import javafx.scene.control.DatePicker?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
@@ -31,11 +32,6 @@
                      </font>
                   </Label>
                   <Line endX="-37.666664123535156" layoutX="143.0" layoutY="129.0" startX="-100.0" stroke="#3497f9" strokeWidth="2.0" />
-                  <JFXButton layoutX="636.0" layoutY="440.0" onAction="#btnPatientAddOnAction" prefHeight="33.0" prefWidth="111.0" style="-fx-background-color: #3497f9;" text="Add Patient" textFill="WHITE">
-                     <font>
-                        <Font name="System Bold" size="13.0" />
-                     </font>
-                  </JFXButton>
                   <Label layoutX="47.0" layoutY="178.0" text="Patient Id">
                      <font>
                         <Font size="14.0" />
@@ -95,48 +91,47 @@
       <Rectangle arcHeight="20.0" arcWidth="20.0" fill="WHITE" height="510.0" layoutX="10.0" layoutY="10.0" stroke="WHITE" strokeType="INSIDE" width="770.0" />
       <AnchorPane fx:id="lodeFormController" prefHeight="520.0" prefWidth="782.0" style="-fx-background-color: F0F9FE;" />
       <Rectangle arcHeight="20.0" arcWidth="20.0" fill="WHITE" height="405.0" layoutX="19.0" layoutY="75.0" stroke="WHITE" strokeType="INSIDE" width="736.0" />
+      <Rectangle arcHeight="20.0" arcWidth="20.0" fill="#f0f9fe" height="63.0" layoutX="27.0" layoutY="241.0" stroke="#f0f9fe" strokeType="INSIDE" width="718.0" />
+      <Rectangle arcHeight="20.0" arcWidth="20.0" fill="#f0f9fe" height="167.0" layoutX="65.0" layoutY="330.0" stroke="#f0f9fe" strokeType="INSIDE" width="432.0" />
       <Line endX="561.0" layoutX="193.0" layoutY="129.0" startX="-174.00001525878906" stroke="#989494" strokeWidth="0.5" />
-      <Label layoutX="43.0" layoutY="106.0" text="Appoment ">
+      <Label layoutX="43.0" layoutY="106.0" text="Appointment ">
          <font>
             <Font name="System Bold" size="13.0" />
          </font>
       </Label>
-      <Line endX="-37.666664123535156" layoutX="142.0" layoutY="129.0" startX="-100.0" stroke="#3497f9" strokeWidth="2.0" />
+      <Line endX="-11.333328247070312" layoutX="142.0" layoutY="129.0" startX="-100.0" stroke="#3497f9" strokeWidth="2.0" />
       <JFXButton layoutX="635.0" layoutY="440.0" onAction="#btnAppomentAddOnAction" prefHeight="33.0" prefWidth="111.0" style="-fx-background-color: #3497f9;" text="Add Appoment" textFill="WHITE">
          <font>
             <Font name="System Bold" size="13.0" />
          </font>
       </JFXButton>
-      <Label layoutX="43.0" layoutY="268.0" text="Appointment Id">
+      <Label layoutX="43.0" layoutY="268.0" text="Appointment Id :">
          <font>
             <Font name="System Bold" size="14.0" />
          </font>
       </Label>
-      <TextField layoutX="172.0" layoutY="262.0" prefHeight="27.0" prefWidth="111.0" promptText="Appointment Id" />
-      <TextField layoutX="413.0" layoutY="262.0" prefHeight="27.0" prefWidth="111.0" promptText="Patient Id" />
-      <TextField layoutX="626.0" layoutY="264.0" prefHeight="27.0" prefWidth="111.0" promptText="Doctor Id" />
-      <TextField layoutX="239.0" layoutY="424.0" prefHeight="33.0" prefWidth="211.0" promptText="Time" />
-      <Label layoutX="330.0" layoutY="266.0" text="Patient Id">
+      <TextField fx:id="txtTime" layoutX="239.0" layoutY="424.0" prefHeight="33.0" prefWidth="211.0" promptText="Time" />
+      <Label layoutX="330.0" layoutY="266.0" text="Patient Id :">
          <font>
             <Font name="System Bold" size="14.0" />
          </font>
       </Label>
-      <Label layoutX="551.0" layoutY="267.0" text="Doctor Id">
+      <Label layoutX="551.0" layoutY="267.0" text="Doctor Id : ">
          <font>
             <Font name="System Bold" size="14.0" />
          </font>
       </Label>
-      <Label layoutX="90.0" layoutY="367.0" text="Appointment Date">
+      <Label layoutX="90.0" layoutY="367.0" text="Appointment Date :">
          <font>
             <Font name="System Bold" size="14.0" />
          </font>
       </Label>
-      <Label layoutX="90.0" layoutY="428.0" text="Appointment Time">
+      <Label layoutX="90.0" layoutY="428.0" text="Appointment Time :">
          <font>
             <Font name="System Bold" size="14.0" />
          </font>
       </Label>
-      <Label layoutX="27.0" layoutY="33.0" text="Appoment Details">
+      <Label layoutX="27.0" layoutY="33.0" text="Appointment Details">
          <font>
             <Font name="System Bold" size="13.0" />
          </font>
@@ -152,39 +147,23 @@
          </image>
       </ImageView>
       <Label layoutX="659.0" layoutY="39.0" prefHeight="19.0" prefWidth="45.0" text="Admin" />
-      <ImageView fitHeight="87.0" fitWidth="700.0" layoutX="40.0" layoutY="142.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../../../../../FX-AddCustomerForm/src/main/resources/img/freepik__i-wont-width-142-and-height-40-__60262.png" />
-         </image>
-      </ImageView>
       <Line endX="-100.00000762939453" endY="27.0" layoutX="407.0" layoutY="269.0" startX="-99.99996948242188" startY="-11.666671752929688" stroke="#3497f9" strokeWidth="2.0" />
       <Line endX="-100.00000762939453" endY="27.0" layoutX="638.0" layoutY="269.0" startX="-99.99996948242188" startY="-11.666671752929688" stroke="#3497f9" strokeWidth="2.0" />
-      <DatePicker layoutX="239.0" layoutY="360.0" prefHeight="33.0" prefWidth="211.0" />
-      <Rectangle arcHeight="20.0" arcWidth="20.0" fill="#3497f9" height="42.0" layoutX="116.0" layoutY="84.0" stroke="#3497f9" strokeType="INSIDE" style="-fx-background-color: #3497f9;" width="636.0" />
+      <DatePicker fx:id="txtDate" layoutX="239.0" layoutY="360.0" prefHeight="33.0" prefWidth="211.0" />
+      <JFXComboBox fx:id="cmbDoctorId" layoutX="636.0" layoutY="263.0" promptText="Doctor Id" />
+      <Rectangle arcHeight="20.0" arcWidth="20.0" fill="#3497f9" height="42.0" layoutX="541.0" layoutY="84.0" stroke="#3497f9" strokeType="INSIDE" style="-fx-background-color: #3497f9;" width="211.0" />
       <JFXButton layoutX="702.0" layoutY="91.0" onAction="#btnAppomentPageBackOnAction" prefHeight="27.0" prefWidth="47.0" ripplerFill="BLACK" style="-fx-background-color: #3497f9;" text="Back" textAlignment="RIGHT" textFill="WHITE" textOverrun="WORD_ELLIPSIS" wrapText="true">
          <font>
             <Font name="System Bold" size="13.0" />
          </font>
       </JFXButton>
-      <JFXButton layoutX="118.0" layoutY="88.0" prefHeight="34.0" prefWidth="134.0" style="-fx-background-color: #3497f9;" text="Add Appointment " textFill="WHITE">
+      <JFXButton layoutX="546.0" layoutY="89.0" onAction="#btnUpdateAppointmentOnAction" prefHeight="34.0" prefWidth="158.0" style="-fx-background-color: #3497f9;" text="Update Appointment " textFill="WHITE">
          <font>
             <Font name="System Bold" size="13.0" />
          </font>
       </JFXButton>
-      <JFXButton layoutX="250.0" layoutY="88.0" prefHeight="34.0" prefWidth="149.0" style="-fx-background-color: #3497f9;" text="Search Appointment " textFill="WHITE">
-         <font>
-            <Font name="System Bold" size="13.0" />
-         </font>
-      </JFXButton>
-      <JFXButton layoutX="560.0" layoutY="88.0" prefHeight="34.0" prefWidth="149.0" style="-fx-background-color: #3497f9;" text="Delete Appointment " textFill="WHITE">
-         <font>
-            <Font name="System Bold" size="13.0" />
-         </font>
-      </JFXButton>
-      <JFXButton layoutX="401.0" layoutY="88.0" prefHeight="34.0" prefWidth="158.0" style="-fx-background-color: #3497f9;" text="Update Appointment " textFill="WHITE">
-         <font>
-            <Font name="System Bold" size="13.0" />
-         </font>
-      </JFXButton>
+      <JFXComboBox fx:id="cmbAppoinementId" layoutX="164.0" layoutY="262.0" promptText="Appointment Id" />
+      <JFXComboBox fx:id="cmbPatientId" layoutX="419.0" layoutY="261.0" promptText="Patient Id" />
+      <ImageView fitHeight="81.0" fitWidth="702.0" layoutX="41.0" layoutY="144.0" pickOnBounds="true" preserveRatio="true" />
    </children>
 </AnchorPane>

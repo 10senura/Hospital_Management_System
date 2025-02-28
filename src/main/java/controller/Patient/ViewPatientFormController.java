@@ -1,5 +1,6 @@
 package controller.Patient;
 
+import com.jfoenix.controls.JFXComboBox;
 import dto.Patient;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -16,14 +17,12 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
 import service.ServiceFactory;
 import service.custom.PatientService;
+import service.custom.impl.patientServiceImpl;
 import util.ServiceType;
 
 import java.io.IOException;
 import java.net.URL;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.ResourceBundle;
-
+import java.util.*;
 
 
 public class ViewPatientFormController implements Initializable  {
@@ -36,25 +35,10 @@ public class ViewPatientFormController implements Initializable  {
     public TextField txtpatient_emergency_c;
     public TextField txtpatient_medical_h;
     public TextField txtpatient_gender;
-    public TextField txtSearchPatient;
 
     @FXML
     public TableView<Patient> tblPatientView;
-    @FXML
-    public TableColumn<Patient, String> clmPatientId;
-    @FXML
-    public TableColumn<Patient, String> clmPatientName;
-    @FXML
-    public TableColumn<Patient, Integer> clmPatientAge;
-    @FXML
-    public TableColumn<Patient, String> clmPatientGender;
-    @FXML
-    public TableColumn<Patient, String> clmPatientContact;
-    @FXML
-    public TableColumn<Patient, String> clmPatientEmergencyContact;
-    @FXML
-    public TableColumn<Patient, String> clmPatientMedicalHistory;
-
+    public JFXComboBox <String> cmbPatientId;
     private final PatientService patientService = ServiceFactory.getInstance().getService(ServiceType.PATIENT);
     List<Patient> patientList = new ArrayList<>();
 
@@ -67,22 +51,77 @@ public class ViewPatientFormController implements Initializable  {
         this.lodeFormController1.getChildren().add(lode);
     }
 
-
-    public void btnPatientSearchOnAction(ActionEvent actionEvent) {
-
+    @Override
+    public void initialize(URL url, ResourceBundle resourceBundle) {
+        loadPatientIds();
+        cmbPatientId.getSelectionModel().selectedItemProperty().addListener((observable, oldValue, newValue) -> {
+            if (newValue != null) {
+                search(newValue);
+            }
+        });
     }
+
     private void populateTable() {
         patientList.clear();
         patientList.addAll(patientService.getPatient());
         tblPatientView.setItems(FXCollections.observableList(patientList));
     }
 
-    public void btnPatientDeleteOnAction(ActionEvent actionEvent) {
-    }
-
-
     public void btnPatientUpdateOnAction(ActionEvent actionEvent) {
+        try {
+            if (cmbPatientId.getValue() == null) {
+                new Alert(Alert.AlertType.WARNING, "Please select a patient to update!").show();
+                return;
+            }
 
+            int id;
+            try {
+                id = Integer.parseInt(cmbPatientId.getValue());
+            } catch (NumberFormatException e) {
+                new Alert(Alert.AlertType.ERROR, "Invalid Patient ID! Please select a valid patient.").show();
+                return;
+            }
+
+            if (
+                    txtpatient_name.getText().isEmpty() ||
+                    txtpatient_age.getText().isEmpty() ||
+                    txtpatient_gender.getText().isEmpty() ||
+                    txtpatient_contact_D.getText().isEmpty() ||
+                    txtpatient_emergency_c.getText().isEmpty() ||
+                    txtpatient_medical_h.getText().isEmpty()) {
+
+                new Alert(Alert.AlertType.WARNING, "Please fill in all fields before updating!").show();
+                return;
+            }
+
+            int age;
+            try {
+                age = Integer.parseInt(txtpatient_age.getText());
+            } catch (NumberFormatException e) {
+                new Alert(Alert.AlertType.ERROR, "Invalid age format! Please enter a valid number.").show();
+                return;
+            }
+
+            Patient patient = new Patient(
+                    id,
+                    txtpatient_name.getText(),
+                    age,
+                    txtpatient_gender.getText(),
+                    txtpatient_contact_D.getText(),
+                    txtpatient_emergency_c.getText(),
+                    txtpatient_medical_h.getText()
+            );
+
+            if (patientService.updatePatient(patient)) {
+                new Alert(Alert.AlertType.INFORMATION, "Patient updated successfully!").show();
+                populateTable();
+                loadPatientIds();
+            } else {
+                new Alert(Alert.AlertType.ERROR, "Update failed! Please try again.").show();
+            }
+        } catch (Exception e) {
+            new Alert(Alert.AlertType.ERROR, "An error occurred: " + e.getMessage()).show();
+        }
     }
 
 
@@ -104,10 +143,29 @@ public class ViewPatientFormController implements Initializable  {
         }
     }
 
-
-    @Override
-    public void initialize(URL url, ResourceBundle resourceBundle) {
+    private void search(String id){
+        Patient patient = patientServiceImpl.getInstance().getSearchPatient(Integer.parseInt(id));
+        if (patient != null) {
+            txtpatient_name.setText(patient.getName());
+            txtpatient_age.setText(String.valueOf(patient.getAge()));
+            txtpatient_gender.setText(patient.getGender());
+            txtpatient_contact_D.setText(patient.getContact_details());
+            txtpatient_emergency_c.setText(patient.getEmergency_contact());
+            txtpatient_medical_h.setText(patient.getMedical_history());
+        } else {
+            new Alert(Alert.AlertType.WARNING, "Patient not found!").show();
+        }
     }
+
+    public void loadPatientIds(){
+        ObservableList<String> patientIds = FXCollections.observableArrayList();
+        List<Patient> patients = Optional.ofNullable(patientService.getAll()).orElse(Collections.emptyList());
+        for (Patient patient : patients) {
+            patientIds.add(String.valueOf(patient.getPatient_id()));
+        }
+        cmbPatientId.setItems(patientIds);
+        }
+
 
     private void setTextToValues(Patient newValue) {
         txtpatient_id.setText(String.valueOf(newValue.getPatient_id()));
@@ -115,7 +173,7 @@ public class ViewPatientFormController implements Initializable  {
         txtpatient_age.setText(String.valueOf(newValue.getAge()));
         txtpatient_gender.setText(newValue.getGender());
         txtpatient_contact_D.setText(newValue.getContact_details());
-        txtpatient_emergency_c.setText(newValue.getEmergence_contact());
+        txtpatient_emergency_c.setText(newValue.getEmergency_contact());
         txtpatient_medical_h.setText(newValue.getMedical_history());
     }
 

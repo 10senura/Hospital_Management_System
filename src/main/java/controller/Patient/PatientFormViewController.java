@@ -17,7 +17,6 @@ import util.ServiceType;
 
 import java.io.IOException;
 import java.net.URL;
-import java.sql.SQLException;
 import java.util.List;
 import java.util.ResourceBundle;
 
@@ -52,7 +51,7 @@ public class PatientFormViewController implements Initializable {
         clmPatientAge.setCellValueFactory(new PropertyValueFactory<>("age"));
         clmPatientGender.setCellValueFactory(new PropertyValueFactory<>("gender"));
         clmPatientContact.setCellValueFactory(new PropertyValueFactory<>("contact_details"));
-        clmPatientEmergencyContact.setCellValueFactory(new PropertyValueFactory<>("emergence_contact"));
+        clmPatientEmergencyContact.setCellValueFactory(new PropertyValueFactory<>("emergency_contact"));
         clmPatientMedicalHistory.setCellValueFactory(new PropertyValueFactory<>("medical_history"));
 
         clmPatientDeleteButton.setCellFactory(param -> new TableCell<Patient, Void>() {
@@ -61,12 +60,25 @@ public class PatientFormViewController implements Initializable {
             {
                 deleteButton.setStyle("-fx-background-color: #3497f9; -fx-text-fill: white;");
                 deleteButton.setOnMouseEntered(e -> deleteButton.setStyle("-fx-background-color: #ff1e00; -fx-text-fill: white;"));
-                deleteButton.setOnMouseExited(e -> deleteButton.setStyle("-fx-background-color: #ff1e00; -fx-text-fill: white;"));
+                deleteButton.setOnMouseExited(e -> deleteButton.setStyle("-fx-background-color: #3497f9; -fx-text-fill: white;"));
 
                 deleteButton.setOnAction(event -> {
                     Patient patient = getTableRow().getItem();
                     if (patient != null) {
-                        patientService.deletePatient(String.valueOf(patient));
+                        Alert confirmDialog = new Alert(Alert.AlertType.CONFIRMATION,
+                                "Are you sure you want to delete this patient?",
+                                ButtonType.YES, ButtonType.NO);
+                        confirmDialog.showAndWait().ifPresent(response -> {
+                            if (response == ButtonType.YES) {
+                                boolean success = patientService.deletePatient(String.valueOf(patient.getPatient_id()));
+                                if (success) {
+                                    getTableView().getItems().remove(patient);
+                                    new Alert(Alert.AlertType.INFORMATION, "Deleted Successfully!").show();
+                                } else {
+                                    new Alert(Alert.AlertType.ERROR, "Delete Failed!").show();
+                                }
+                            }
+                        });
                     }
                 });
             }

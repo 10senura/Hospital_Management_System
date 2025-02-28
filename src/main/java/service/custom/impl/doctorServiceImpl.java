@@ -1,7 +1,9 @@
 package service.custom.impl;
 
 import dto.Doctor;
+import dto.Patient;
 import entity.DoctorEntity;
+import entity.PatientEntity;
 import org.modelmapper.ModelMapper;
 import repository.DaoFactory;
 import repository.custom.DoctorDao;
@@ -32,27 +34,69 @@ public class doctorServiceImpl implements DoctorService {
 
     @Override
     public List<Doctor> getDoctor() {
-        return List.of();
+        List<DoctorEntity> doctorEntities = dao.getAll();
+        List<Doctor> doctors = new ArrayList<>();
+        for (DoctorEntity entity : doctorEntities) {
+            doctors.add(modelMapper.map(entity, Doctor.class));
+        }
+        return doctors;
     }
 
     @Override
     public boolean addDoctor(Doctor doctor) {
-        return false;
+        try {
+            DoctorEntity doctorEntity = modelMapper.map(doctor, DoctorEntity.class);
+            return dao.save(doctorEntity);
+        } catch (Exception e) {
+            e.printStackTrace();
+            return false;
+        }
     }
 
     @Override
-    public Doctor getPatientBYId(int doctor_id) {
+    public Doctor getDoctorBYId(int doctor_id) {
+        try {
+            DoctorEntity entity = dao.search(String.valueOf(doctor_id));
+            if (entity != null) {
+                return modelMapper.map(entity, Doctor.class);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
         return null;
     }
 
     @Override
     public boolean updateDoctor(Doctor doctor) {
-        return false;
+        try {
+            DoctorEntity doctorEntity = modelMapper.map(doctor, DoctorEntity.class);
+            return dao.update(doctorEntity);
+        } catch (Exception e) {
+            e.printStackTrace();
+            return false;
+        }
     }
 
     @Override
+    public Doctor getSearchDoctor(int doctor_id) {
+        try {
+            DoctorEntity entity = dao.search(String.valueOf(doctor_id));
+            if (entity != null) {
+                return modelMapper.map(entity, Doctor.class);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;    }
+
+    @Override
     public boolean deleteDoctor(int doctor_id) {
-        return false;
+        try {
+            return dao.delete(String.valueOf(doctor_id));
+        } catch (Exception e) {
+            e.printStackTrace();
+            return false;
+        }
     }
 
     @Override

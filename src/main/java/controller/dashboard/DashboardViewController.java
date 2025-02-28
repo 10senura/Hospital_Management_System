@@ -4,12 +4,15 @@ import db.DBConnection;
 import dto.Patient;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.fxml.Initializable;
+import javafx.scene.chart.LineChart;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import service.ServiceFactory;
 import service.custom.PatientService;
@@ -21,6 +24,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.List;
 import java.util.ResourceBundle;
+import javafx.scene.chart.XYChart;
+
 
 
 public class DashboardViewController  implements Initializable {
@@ -40,8 +45,7 @@ public class DashboardViewController  implements Initializable {
     public Label lblDoctor;
     public Label lblBilling;
     public Label lblPatient;
-
-
+    public LineChart lineChart;
 
 
     @Override
@@ -71,7 +75,7 @@ public class DashboardViewController  implements Initializable {
         clmPatientAge.setCellValueFactory(new PropertyValueFactory<>("age"));
         clmPatientGender.setCellValueFactory(new PropertyValueFactory<>("gender"));
         clmPatientContact.setCellValueFactory(new PropertyValueFactory<>("contact_details"));
-        clmPatientEmergencyContact.setCellValueFactory(new PropertyValueFactory<>("emergence_contact"));
+        clmPatientEmergencyContact.setCellValueFactory(new PropertyValueFactory<>("emergency_contact"));
         clmPatientMedicalHistory.setCellValueFactory(new PropertyValueFactory<>("medical_history"));
         loadTable();
     }
@@ -100,8 +104,48 @@ public class DashboardViewController  implements Initializable {
         }
     }
 
+    public void btnAppoimtmentLineChart(ActionEvent actionEvent) {
+        loadLineChart("SELECT appointment_date, COUNT(*) FROM appointment GROUP BY appointment_date", "Appointments Over Time");
+    }
+
+    public void btnDoctorLineChart(ActionEvent actionEvent) {
+        loadLineChart("SELECT join_date, COUNT(*) FROM doctor GROUP BY join_date", "Doctors Over Time");
+    }
+
+    public void btnPatientLineChart(ActionEvent actionEvent) {
+        loadLineChart("SELECT registered_date, COUNT(*) FROM patient GROUP BY registered_date", "Patients Over Time");
+    }
+
+    public void btnBillingLineChart(ActionEvent actionEvent) {
+        loadLineChart("SELECT bill_date, SUM(amount) FROM billing GROUP BY bill_date", "Billing Over Time");
+    }
+
+    private void loadLineChart(String query, String chartTitle) {
+        lineChart.getData().clear(); // Clear previous data
+        XYChart.Series<String, Number> series = new XYChart.Series<>();
+        series.setName(chartTitle);
+
+        try {
+            Connection connection = DBConnection.getInstance().getConnection();
+            PreparedStatement preparedStatement = connection.prepareStatement(query);
+            ResultSet resultSet = preparedStatement.executeQuery();
+
+            while (resultSet.next()) {
+                String date = resultSet.getString(1); // Date column
+                int count = resultSet.getInt(2); // Count or sum column
+                series.getData().add(new XYChart.Data<>(date, count));
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        lineChart.getData().add(series);
+    }
+
+    public void linechartViewOnAction(MouseEvent mouseEvent) {
 
 
+    }
 
 }
 

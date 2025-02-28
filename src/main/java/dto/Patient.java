@@ -15,7 +15,7 @@ public class Patient {
     private Integer age;
     private String gender;
     private String contact_details;
-    private String emergence_contact;
+    private String emergency_contact;
     private String medical_history;
 
 }

@@ -62,7 +62,15 @@ public class patientServiceImpl implements PatientService {
     }
 
     @Override
-    public Patient getSearchPatient(int patient_id) {
+    public Patient getSearchPatient(int id) {
+        try {
+            PatientEntity entity = dao.search(String.valueOf(id));
+            if (entity != null) {
+                return modelMapper.map(entity, Patient.class);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
         return null;
     }
 
@@ -74,7 +82,8 @@ public class patientServiceImpl implements PatientService {
         } catch (Exception e) {
             e.printStackTrace();
             return false;
-        }    }
+        }
+    }
 
     @Override
     public boolean deletePatient(String patient_id) {

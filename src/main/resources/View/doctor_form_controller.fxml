@@ -45,8 +45,9 @@
             <TableColumn fx:id="clmDoctorName" prefWidth="92.00004577636719" text="Name" />
             <TableColumn fx:id="clmDoctorspecialty" minWidth="0.0" prefWidth="96.0" text="Specialty" />
             <TableColumn fx:id="clmDoctorqualifications" minWidth="0.0" prefWidth="118.66665649414062" text="Qualifications" />
-            <TableColumn fx:id="clmDoctoravailability" prefWidth="115.33328247070312" text="Availability" />
-            <TableColumn fx:id="clmDoctorContact" prefWidth="156.0" text="Contact" />
+            <TableColumn fx:id="clmDoctoravailability" prefWidth="88.66671752929688" text="Availability" />
+            <TableColumn fx:id="clmDoctorContact" prefWidth="112.6666259765625" text="Contact" />
+            <TableColumn fx:id="clmDoctorDeleteButton" prefWidth="68.66668701171875" />
          </columns>
       </TableView>
       <Label layoutX="658.0" layoutY="24.0" text="Senura indeewara">

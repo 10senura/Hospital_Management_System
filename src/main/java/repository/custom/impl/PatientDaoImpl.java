@@ -37,7 +37,7 @@ public class PatientDaoImpl implements PatientDao {
             statement.setInt(2, entity.getAge());
             statement.setString(3, entity.getGender());
             statement.setString(4, entity.getContact_details());
-            statement.setString(5, entity.getEmergence_contact());
+            statement.setString(5, entity.getEmergency_contact());
             statement.setString(6, entity.getMedical_history());
             return statement.executeUpdate() > 0;
         } catch (SQLException e) {
@@ -59,7 +59,7 @@ public class PatientDaoImpl implements PatientDao {
                             resultSet.getInt("age"),
                             resultSet.getString("gender"),
                             resultSet.getString("contact_details"),
-                            resultSet.getString("emergence_contact"),
+                            resultSet.getString("emergency_contact"),
                             resultSet.getString("medical_history")
                     );
                 }
@@ -84,13 +84,13 @@ public class PatientDaoImpl implements PatientDao {
 
     @Override
     public boolean update(PatientEntity entity) {
-        String query = "UPDATE patient SET name = ?, age = ?, gender = ?, contact_details = ?, emergence_contact = ?, medical_history = ? WHERE patient_id = ?";
+        String query = "UPDATE patient SET name = ?, age = ?, gender = ?, contact_details = ?, emergency_contact = ?, medical_history = ? WHERE patient_id = ?";
         try (PreparedStatement statement = DBConnection.getInstance().getConnection().prepareStatement(query)) {
             statement.setString(1, entity.getName());
             statement.setInt(2, entity.getAge());
             statement.setString(3, entity.getGender());
             statement.setString(4, entity.getContact_details());
-            statement.setString(5, entity.getEmergence_contact());
+            statement.setString(5, entity.getEmergency_contact());
             statement.setString(6, entity.getMedical_history());
             statement.setInt(7, entity.getPatient_id());
             return statement.executeUpdate() > 0;

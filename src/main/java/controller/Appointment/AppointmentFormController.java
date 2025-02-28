@@ -25,9 +25,6 @@ import java.util.ResourceBundle;
 
 public class AppointmentFormController implements Initializable {
     public AnchorPane lodeFormControllerAppoment;
-    public AnchorPane lodeFormController1;
-    public AnchorPane lodeFormControllera;
-    public AnchorPane lodeFormController;
     public TableView tblAppoimementView;
     public TableColumn clmappointment_id;
     public TableColumn clmpatient_id;
@@ -44,7 +41,7 @@ public class AppointmentFormController implements Initializable {
         assert resource!=null;
         Parent lode = FXMLLoader.load(resource);
         this.lodeFormControllerAppoment.getChildren().clear();
-        this.lodeFormControllerAppoment .getChildren().add(lode);
+        this.lodeFormControllerAppoment.getChildren().add(lode);
     }
 
     @Override
@@ -61,15 +58,27 @@ public class AppointmentFormController implements Initializable {
             {
                 deleteButton.setStyle("-fx-background-color: #3497f9; -fx-text-fill: white;");
                 deleteButton.setOnMouseEntered(e -> deleteButton.setStyle("-fx-background-color: #ff1e00; -fx-text-fill: white;"));
-                deleteButton.setOnMouseExited(e -> deleteButton.setStyle("-fx-background-color: #ff1e00; -fx-text-fill: white;"));
+                deleteButton.setOnMouseExited(e -> deleteButton.setStyle("-fx-background-color: #3497f9; -fx-text-fill: white;"));
 
                 deleteButton.setOnAction(event -> {
                     Appointment appointment = getTableRow().getItem();
                     if (appointment != null) {
-                        appointmentService.deleteAppointment(String.valueOf(appointment));
+                        Alert confirmDialog = new Alert(Alert.AlertType.CONFIRMATION,
+                                "Are you sure you want to delete this patient?",
+                                ButtonType.YES, ButtonType.NO);
+                        confirmDialog.showAndWait().ifPresent(response -> {
+                            if (response == ButtonType.YES) {
+                                boolean success = appointmentService.deleteAppointment(String.valueOf(appointment.getAppointment_id()));
+                                if (success) {
+                                    getTableView().getItems().remove(appointment);
+                                    new Alert(Alert.AlertType.INFORMATION, "Deleted Successfully!").show();
+                                } else {
+                                    new Alert(Alert.AlertType.ERROR, "Delete Failed!").show();
+                                }
+                            }
+                        });
                     }
                 });
-
             }
 
             @Override

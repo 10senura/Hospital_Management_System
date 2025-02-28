@@ -50,7 +50,7 @@
                   <Insets />
                </opaqueInsets>
             </TextField>
-            <ImageView fitHeight="19.0" fitWidth="20.0" layoutX="48.0" layoutY="141.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="19.0" fitWidth="20.0" layoutX="169.0" layoutY="142.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../../../../../FX-AddCustomerForm/src/main/resources/img/icons8-search-50.png" />
                </image>

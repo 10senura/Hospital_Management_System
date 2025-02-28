@@ -1,7 +1,9 @@
 package service.custom.impl;
 
 import dto.Appointment;
+import dto.Patient;
 import entity.AppointmentEntity;
+import entity.PatientEntity;
 import org.modelmapper.ModelMapper;
 import repository.DaoFactory;
 import repository.custom.AppointmentDao;
@@ -33,23 +35,59 @@ public class appointmentServiceImpl implements AppointmentService, SuperService 
 
     @Override
     public List<Appointment> getAppointment() {
-        return List.of();
+        List<AppointmentEntity> appointmentEntities = dao.getAll();
+        List<Appointment> appointments = new ArrayList<>();
+        for (AppointmentEntity entity : appointmentEntities) {
+            appointments.add(modelMapper.map(entity, Appointment.class));
+        }
+        return appointments;
     }
 
     @Override
     public boolean addAppointment(Appointment appointment) {
-        return false;
-    }
+        try {
+            AppointmentEntity appointmentEntity = modelMapper.map(appointment, AppointmentEntity.class);
+            return dao.save(appointmentEntity);
+        } catch (Exception e) {
+            e.printStackTrace();
+            return false;
+        }     }
 
     @Override
     public Appointment getAppointment(int appointment_id) {
+        try {
+            AppointmentEntity entity = dao.search(String.valueOf(appointment_id));
+            if (entity != null) {
+                return modelMapper.map(entity, Appointment.class);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    @Override
+    public Appointment getSearchAppointment(int appointment_id) {
+        try {
+            AppointmentEntity entity = dao.search(String.valueOf(appointment_id));
+            if (entity != null) {
+                return modelMapper.map(entity, Appointment.class);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
         return null;
     }
 
     @Override
     public boolean updateAppointment(Appointment appointment) {
-        return false;
-    }
+        try {
+            AppointmentEntity appointmentEntity = modelMapper.map(appointment, AppointmentEntity.class);
+            return dao.update(appointmentEntity);
+        } catch (Exception e) {
+            e.printStackTrace();
+            return false;
+        }     }
 
     @Override
     public boolean deleteAppointment(String appointment_id) {
@@ -58,7 +96,8 @@ public class appointmentServiceImpl implements AppointmentService, SuperService 
         } catch (Exception e) {
             e.printStackTrace();
             return false;
-        }    }
+        }
+    }
 
     @Override
     public List<Appointment> getAll() {

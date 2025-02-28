@@ -12,10 +12,9 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
+public class DoctorDaoImpl implements DoctorDao {
 
-public class DoctorDaoImpl  implements DoctorDao {
-
-    private static  DoctorDaoImpl doctorDaoImpl ;
+    private static DoctorDaoImpl doctorDaoImpl;
     private static final Logger LOGGER = Logger.getLogger(DoctorDaoImpl.class.getName());
 
     private DoctorDaoImpl() {
@@ -34,22 +33,70 @@ public class DoctorDaoImpl  implements DoctorDao {
 
     @Override
     public boolean save(DoctorEntity entity) {
-        return false;
+        String query = "INSERT INTO doctor (name, specialty, availability, qualifications, contact_details) VALUES (?, ?, ?, ?, ?)";
+        try (PreparedStatement statement = DBConnection.getInstance().getConnection().prepareStatement(query)) {
+            statement.setString(1, entity.getName());
+            statement.setString(2, entity.getSpecialty());
+            statement.setString(3, entity.getAvailability());
+            statement.setString(4, entity.getQualifications());
+            statement.setString(5, entity.getContact_details());
+            return statement.executeUpdate() > 0;
+        } catch (SQLException e) {
+            LOGGER.log(Level.SEVERE, "Error saving doctor: " + entity, e);
+            return false;
+        }
     }
 
     @Override
-    public DoctorEntity search(String s) {
+    public DoctorEntity search(String id) {
+        String query = "SELECT * FROM doctor WHERE doctor_id = ?";
+        try (PreparedStatement statement = DBConnection.getInstance().getConnection().prepareStatement(query)) {
+            statement.setString(1, id);
+            try (ResultSet resultSet = statement.executeQuery()) {
+                if (resultSet.next()) {
+                    return new DoctorEntity(
+                            resultSet.getInt("doctor_id"),
+                            resultSet.getString("name"),
+                            resultSet.getString("specialty"),
+                            resultSet.getString("availability"),
+                            resultSet.getString("qualifications"),
+                            resultSet.getString("contact_details")
+                    );
+                }
+            }
+        } catch (SQLException e) {
+            LOGGER.log(Level.SEVERE, "Error searching doctor with ID: " + id, e);
+        }
         return null;
     }
 
     @Override
-    public boolean delete(String s) {
-        return false;
+    public boolean delete(String id) {
+        String query = "DELETE FROM doctor WHERE doctor_id = ?";
+        try (PreparedStatement statement = DBConnection.getInstance().getConnection().prepareStatement(query)) {
+            statement.setString(1, id);
+            return statement.executeUpdate() > 0;
+        } catch (SQLException e) {
+            LOGGER.log(Level.SEVERE, "Error deleting doctor with ID: " + id, e);
+            return false;
+        }
     }
 
     @Override
     public boolean update(DoctorEntity entity) {
-        return false;
+        String query = "UPDATE doctor SET name = ?, specialty = ?, availability = ?, qualifications = ?, contact_details = ? WHERE doctor_id = ?";
+        try (PreparedStatement statement = DBConnection.getInstance().getConnection().prepareStatement(query)) {
+            statement.setString(1, entity.getName());
+            statement.setString(2, entity.getSpecialty());
+            statement.setString(3, entity.getAvailability());
+            statement.setString(4, entity.getQualifications());
+            statement.setString(5, entity.getContact_details());
+            statement.setInt(6, entity.getDoctor_id());
+            return statement.executeUpdate() > 0;
+        } catch (SQLException e) {
+            LOGGER.log(Level.SEVERE, "Error updating doctor: " + entity, e);
+            return false;
+        }
     }
 
     @Override
@@ -69,7 +116,7 @@ public class DoctorDaoImpl  implements DoctorDao {
                 ));
             }
         } catch (SQLException e) {
-            LOGGER.log(Level.SEVERE, "Error retrieving all patients", e);
+            LOGGER.log(Level.SEVERE, "Error retrieving all doctors", e);
         }
         return doctors;
     }

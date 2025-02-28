@@ -172,7 +172,7 @@ public class MainDashBoardFormController implements Initializable {
         clmPatientAge.setCellValueFactory(new PropertyValueFactory<>("age"));
         clmPatientGender.setCellValueFactory(new PropertyValueFactory<>("gender"));
         clmPatientContact.setCellValueFactory(new PropertyValueFactory<>("contact_details"));
-        clmPatientEmergencyContact.setCellValueFactory(new PropertyValueFactory<>("emergence_contact"));
+        clmPatientEmergencyContact.setCellValueFactory(new PropertyValueFactory<>("emergency_contact"));
         clmPatientMedicalHistory.setCellValueFactory(new PropertyValueFactory<>("medical_history"));
     }
 
@@ -182,13 +182,21 @@ public class MainDashBoardFormController implements Initializable {
         XYChart.Series<String, Number> series = new XYChart.Series<>();
         series.setName("Hospital Statistics");
 
-        series.getData().add(new XYChart.Data<>("Appointments", appointmentCount));
-        series.getData().add(new XYChart.Data<>("Doctors", doctorCount));
-        series.getData().add(new XYChart.Data<>("Billing", billingCount));
-        series.getData().add(new XYChart.Data<>("Patients", patientCount));
+        XYChart.Data<String, Number> appData = new XYChart.Data<>("Appointments", appointmentCount);
+        XYChart.Data<String, Number> docData = new XYChart.Data<>("Doctors", doctorCount);
+        XYChart.Data<String, Number> billData = new XYChart.Data<>("Billing", billingCount);
+        XYChart.Data<String, Number> patData = new XYChart.Data<>("Patients", patientCount);
+
+        appData.nodeProperty().addListener((obs, oldNode, newNode) -> newNode.setStyle("-fx-bar-fill: #3497f9;"));
+        docData.nodeProperty().addListener((obs, oldNode, newNode) -> newNode.setStyle("-fx-bar-fill: #3497f9;"));
+        billData.nodeProperty().addListener((obs, oldNode, newNode) -> newNode.setStyle("-fx-bar-fill: #3497f9;"));
+        patData.nodeProperty().addListener((obs, oldNode, newNode) -> newNode.setStyle("-fx-bar-fill: #3497f9;"));
+
+        series.getData().addAll(appData, docData, billData, patData);
 
         bsrchartview.getData().add(series);
     }
+
 
     private int getCount(Connection connection, String query) {
         try {
