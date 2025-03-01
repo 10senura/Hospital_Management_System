@@ -20,6 +20,7 @@ public class ServiceFactory {
             case PATIENT: return (T) patientServiceImpl.getInstance();
             case DOCTOR: return (T) doctorServiceImpl.getInstance();
             case APPOINTMENT: return (T) appointmentServiceImpl.getInstance();
+            case MEDICINE: return (T) medicineServiceImpl.getInstance();
             default: return null;
         }
     }

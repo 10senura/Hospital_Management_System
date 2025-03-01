@@ -2,6 +2,7 @@ package repository;
 
 import repository.custom.impl.AppointmentDaoImpl;
 import repository.custom.impl.DoctorDaoImpl;
+import repository.custom.impl.MedicineDaoImpl;
 import repository.custom.impl.PatientDaoImpl;
 import util.DaoType;
 
@@ -24,6 +25,7 @@ public class DaoFactory {
             case PATIENT: return (T) PatientDaoImpl.getInstance();
             case DOCTOR: return (T) DoctorDaoImpl.getInstance();
             case APPOINTMENT: return (T) AppointmentDaoImpl.getInstance();
+            case MEDICINE: return (T) MedicineDaoImpl.getInstance();
             default: return null;
         }
     }

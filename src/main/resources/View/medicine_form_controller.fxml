@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane fx:id="medicineLoadFormController" prefHeight="520.0" prefWidth="770.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.medicine.MedicineFormController">
+   <children>
+      <AnchorPane fx:id="lodeFormController" layoutX="10.0" layoutY="10.0" prefHeight="510.0" prefWidth="770.0" style="-fx-background-color: F0F9FE;">
+         <children>
+            <Rectangle arcHeight="20.0" arcWidth="20.0" fill="WHITE" height="405.0" layoutX="18.0" layoutY="75.0" stroke="WHITE" strokeType="INSIDE" width="736.0" />
+            <Rectangle arcHeight="20.0" arcWidth="20.0" fill="#f0f9fe" height="320.0" layoutX="39.0" layoutY="141.0" stroke="#f0f9fe" strokeType="INSIDE" width="550.0" />
+            <Line endX="561.0" layoutX="194.0" layoutY="129.0" startX="-174.00001525878906" stroke="#989494" strokeWidth="0.5" />
+            <Label layoutX="44.0" layoutY="106.0" text="Medicine">
+               <font>
+                  <Font name="System Bold" size="13.0" />
+               </font>
+            </Label>
+            <Line endX="-37.666664123535156" layoutX="143.0" layoutY="129.0" startX="-100.0" stroke="#3497f9" strokeWidth="2.0" />
+            <JFXButton layoutX="636.0" layoutY="440.0" onAction="#btnMedicineSubmitOnAction" prefHeight="33.0" prefWidth="111.0" style="-fx-background-color: #3497f9;" text="Submit" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="13.0" />
+               </font>
+            </JFXButton>
+            <Label layoutX="50.0" layoutY="161.0" text="Medicine Id :">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font>
+            </Label>
+            <TextField fx:id="txtM_ExpireDate" layoutX="311.0" layoutY="398.0" prefHeight="34.0" prefWidth="211.0" promptText="Expire Date" />
+            <TextField fx:id="txtM_stock" layoutX="310.0" layoutY="346.0" prefHeight="34.0" prefWidth="211.0" promptText="Stock" />
+            <Label layoutX="155.0" layoutY="249.0" text="Category :">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font>
+            </Label>
+            <Label layoutX="156.0" layoutY="202.0" text="Medicine Name :">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font>
+            </Label>
+            <Label layoutX="156.0" layoutY="357.0" text="Stock Quantity :">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font>
+            </Label>
+            <Rectangle arcHeight="20.0" arcWidth="20.0" fill="#3497f9" height="42.0" layoutX="518.0" layoutY="81.0" stroke="#3497f9" strokeType="INSIDE" style="-fx-background-color: #3497f9;" width="227.0" />
+            <JFXButton layoutX="667.0" layoutY="85.0" onAction="#btnBackAddMedicinePageOnAction" prefHeight="34.0" prefWidth="74.0" style="-fx-background-color: #3497f9;" text="Back" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="13.0" />
+               </font>
+            </JFXButton>
+            <JFXButton layoutX="521.0" layoutY="85.0" onAction="#btnUpdateMedicineOnAction" prefHeight="34.0" prefWidth="148.0" style="-fx-background-color: #3497f9;" text="Update Medicine" textFill="WHITE">
+               <font>
+                  <Font name="System Bold" size="13.0" />
+               </font>
+            </JFXButton>
+            <JFXComboBox fx:id="cmbmedicineId" layoutX="168.0" layoutY="151.0" prefHeight="27.0" prefWidth="119.0" promptText="Medicine Id" />
+            <Label layoutX="155.0" layoutY="409.0" text="Expiry Date :">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font>
+            </Label>
+            <TextField fx:id="txtM_price" layoutX="310.0" layoutY="293.0" prefHeight="34.0" prefWidth="211.0" promptText="Price" />
+            <TextField fx:id="txtM_Category" layoutX="309.0" layoutY="239.0" prefHeight="34.0" prefWidth="211.0" promptText="Category" />
+            <TextField fx:id="txtmedicineName" layoutX="311.0" layoutY="194.0" prefHeight="34.0" prefWidth="211.0" promptText="Name" />
+            <Label layoutX="156.0" layoutY="301.0" text="Price :">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font>
+            </Label>
+         </children>
+      </AnchorPane>
+      <Label layoutX="27.0" layoutY="33.0" text="Doctor Prescription">
+         <font>
+            <Font name="System Bold" size="13.0" />
+         </font>
+      </Label>
+      <Label layoutX="658.0" layoutY="24.0" text="Senura indeewara">
+         <font>
+            <Font name="System Bold" size="13.0" />
+         </font>
+      </Label>
+      <ImageView fitHeight="42.0" fitWidth="34.0" layoutX="618.0" layoutY="22.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../../../FX-AddCustomerForm/src/main/resources/img/icon-customer.gif" />
+         </image>
+      </ImageView>
+      <Label layoutX="659.0" layoutY="39.0" prefHeight="19.0" prefWidth="45.0" text="Admin" />
+   </children>
+</AnchorPane>

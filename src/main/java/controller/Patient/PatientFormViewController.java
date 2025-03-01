@@ -117,15 +117,4 @@ public class PatientFormViewController implements Initializable {
         this.lodeFormController1.getChildren().add(lode);
     }
 
-    private void loadForm(String fxmlPath) throws IOException {
-        URL resource = this.getClass().getResource(fxmlPath);
-        if (resource == null) {
-            throw new IOException("FXML file not found: " + fxmlPath);
-        }
-        Parent form = FXMLLoader.load(resource);
-        lodeFormController1.getChildren().clear();
-        lodeFormController1.getChildren().add(form);
-    }
-
-
 }

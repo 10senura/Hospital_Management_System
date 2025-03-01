@@ -15,14 +15,14 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="lodeFormController1" prefHeight="510.0" prefWidth="770.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.Patient.PatientFormViewController">
+
+<AnchorPane fx:id="MrdicineloardFormController" prefHeight="510.0" prefWidth="770.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.medicine.MedicineFormViewController">
    <children>
-      <Rectangle arcHeight="20.0" arcWidth="20.0" fill="WHITE" height="510.0" stroke="WHITE" strokeType="INSIDE" width="772.0" />
-      <AnchorPane fx:id="lodeFormController" layoutX="2.0" prefHeight="510.0" prefWidth="770.0" style="-fx-background-color: F0F9FE;" AnchorPane.topAnchor="0.0">
+      <AnchorPane fx:id="lodeFormController" layoutX="12.0" layoutY="10.0" prefHeight="510.0" prefWidth="770.0" style="-fx-background-color: F0F9FE;">
          <children>
             <Rectangle arcHeight="20.0" arcWidth="20.0" fill="WHITE" height="405.0" layoutX="12.0" layoutY="75.0" stroke="WHITE" strokeType="INSIDE" width="736.0" />
             <Line endX="562.0" layoutX="186.0" layoutY="129.0" startX="-174.00001525878906" stroke="#989494" strokeWidth="0.5" />
-            <JFXButton layoutX="628.0" layoutY="92.0" onAction="#btnPatientAddPageOnAction" prefHeight="27.0" prefWidth="109.0" ripplerFill="BLACK" style="-fx-background-color: #3497f9;" text="Add Patient" textAlignment="RIGHT" textFill="WHITE" textOverrun="WORD_ELLIPSIS" wrapText="true">
+            <JFXButton layoutX="611.0" layoutY="81.0" onAction="#btnAddmedicineOnAction" prefHeight="39.0" prefWidth="126.0" ripplerFill="BLACK" style="-fx-background-color: #3497f9;" text="Add Medicine" textAlignment="RIGHT" textFill="WHITE" textOverrun="WORD_ELLIPSIS" wrapText="true">
                <font>
                   <Font size="13.0" />
                </font>
@@ -34,18 +34,18 @@
                   </ImageView>
                </graphic>
             </JFXButton>
-            <Label layoutX="44.0" layoutY="106.0" text="Patient Info">
+            <Label layoutX="44.0" layoutY="106.0" text="Medicine Info">
                <font>
                   <Font name="System Bold" size="13.0" />
                </font>
             </Label>
             <Line endX="3.6666717529296875" layoutX="143.0" layoutY="129.0" startX="-100.0" stroke="#3497f9" strokeWidth="2.0" />
-            <Label layoutX="27.0" layoutY="33.0" text="Patient Details">
+            <Label layoutX="27.0" layoutY="33.0" text="medicine Details">
                <font>
                   <Font name="System Bold" size="13.0" />
                </font>
             </Label>
-            <TextField fx:id="txtSearchPatient" layoutX="42.0" layoutY="139.0" promptText="       Search">
+            <TextField fx:id="txtSearchmedicine" layoutX="42.0" layoutY="139.0" promptText="       Search">
                <opaqueInsets>
                   <Insets />
                </opaqueInsets>
@@ -56,31 +56,30 @@
                </image>
             </ImageView>
             <DatePicker layoutX="200.0" layoutY="138.0" promptText="Filter by Date" />
-            <TableView fx:id="tblPatientView" layoutX="34.0" layoutY="187.0" prefHeight="281.0" prefWidth="702.0" styleClass="table-row-cell" stylesheets="@../css/Table.css">
+            <TableView fx:id="tblMedicineView" layoutX="34.0" layoutY="187.0" prefHeight="281.0" prefWidth="702.0" styleClass="table-row-cell" stylesheets="@../css/Table.css">
                <columns>
-                  <TableColumn fx:id="clmPatientId" prefWidth="70.00000381469727" text="patient Id" />
-                  <TableColumn fx:id="clmPatientName" prefWidth="100.66667938232422" text="Name" />
-                  <TableColumn fx:id="clmPatientAge" prefWidth="59.999969482421875" text="Age" />
-                  <TableColumn fx:id="clmPatientGender" prefWidth="60.0" text="Gender" />
-                  <TableColumn fx:id="clmPatientContact" prefWidth="116.0" text="Contact Details" />
-                  <TableColumn fx:id="clmPatientEmergencyContact" prefWidth="126.66671752929688" text="Emergency Contact" />
-                  <TableColumn fx:id="clmPatientMedicalHistory" prefWidth="107.3333740234375" text="Medical History" />
-                  <TableColumn fx:id="clmPatientDeleteButton" minWidth="0.0" prefWidth="61.99993896484375" />
+                  <TableColumn fx:id="clmMedicineId" prefWidth="70.00000381469727" text="Medicine Id" />
+                  <TableColumn fx:id="clmMedicineName" prefWidth="134.6666488647461" text="Name" />
+                  <TableColumn fx:id="clmMedicineCategory" prefWidth="105.33332824707031" text="Category " />
+                  <TableColumn fx:id="clmMedicineStock" prefWidth="98.66668701171875" text="Stock Quantity " />
+                  <TableColumn fx:id="clmMedicinePrice" prefWidth="109.33328247070312" text="Price" />
+                  <TableColumn fx:id="clmMedicineExpireDate" prefWidth="122.666748046875" text="Expiry Date " />
+                  <TableColumn fx:id="clmMidicineDeleteButton" minWidth="0.0" prefWidth="59.99993896484375" />
                </columns>
             </TableView>
             <GenericEditableTableCell layoutX="420.0" layoutY="23.0" prefHeight="45.0" prefWidth="45.0" />
          </children>
       </AnchorPane>
-      <Label layoutX="648.0" layoutY="14.0" text="Senura indeewara">
+      <Label layoutX="658.0" layoutY="24.0" text="Senura indeewara">
          <font>
             <Font name="System Bold" size="13.0" />
          </font>
       </Label>
-      <ImageView fitHeight="42.0" fitWidth="34.0" layoutX="608.0" layoutY="12.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="42.0" fitWidth="34.0" layoutX="618.0" layoutY="22.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../../../../../FX-AddCustomerForm/src/main/resources/img/icon-customer.gif" />
          </image>
       </ImageView>
-      <Label layoutX="649.0" layoutY="29.0" prefHeight="19.0" prefWidth="45.0" text="Admin" />
+      <Label layoutX="659.0" layoutY="39.0" prefHeight="19.0" prefWidth="45.0" text="Admin" />
    </children>
 </AnchorPane>
