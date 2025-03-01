@@ -1,9 +1,7 @@
 package repository;
 
-import repository.custom.impl.AppointmentDaoImpl;
-import repository.custom.impl.DoctorDaoImpl;
-import repository.custom.impl.MedicineDaoImpl;
-import repository.custom.impl.PatientDaoImpl;
+import repository.custom.PrescriptionDao;
+import repository.custom.impl.*;
 import util.DaoType;
 
 
@@ -26,6 +24,7 @@ public class DaoFactory {
             case DOCTOR: return (T) DoctorDaoImpl.getInstance();
             case APPOINTMENT: return (T) AppointmentDaoImpl.getInstance();
             case MEDICINE: return (T) MedicineDaoImpl.getInstance();
+            case PRESCRIPTION: return (T) PrescriptionDaoImpl.getInstance();
             default: return null;
         }
     }

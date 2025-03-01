@@ -12,17 +12,19 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.layout.AnchorPane;
 import service.ServiceFactory;
 import service.custom.MedicineService;
+import service.custom.PatientService;
 import util.ServiceType;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
 
 public class MedicineFormViewController implements Initializable {
     public AnchorPane lodeFormController;
     public TextField txtSearchmedicine;
-    public TableView tblMedicineView;
+    public TableView <Medicine> tblMedicineView;
     public TableColumn clmMedicineId;
     public TableColumn clmMedicineName;
     public TableColumn clmMedicineCategory;
@@ -45,6 +47,7 @@ public class MedicineFormViewController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
+
         clmMedicineId.setCellValueFactory(new PropertyValueFactory<>("medicine_id"));
         clmMedicineName.setCellValueFactory(new PropertyValueFactory<>("medicine_name"));
         clmMedicineCategory.setCellValueFactory(new PropertyValueFactory<>("category"));
@@ -101,9 +104,8 @@ public class MedicineFormViewController implements Initializable {
             ObservableList<Medicine> observableList = FXCollections.observableArrayList(medicines);
             tblMedicineView.setItems(observableList);
         } else {
-            new Alert(Alert.AlertType.WARNING, "No patient records found.").show();
+            new Alert(Alert.AlertType.WARNING, "No Medicine records found.").show();
         }
     }
-
 
 }

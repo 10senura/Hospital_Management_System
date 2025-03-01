@@ -1,6 +1,7 @@
 package controller.doctor;
 
 import dto.Doctor;
+import dto.Medicine;
 import dto.Patient;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -18,6 +19,7 @@ import util.ServiceType;
 
 import java.io.IOException;
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
 

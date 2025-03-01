@@ -1,4 +1,8 @@
 package repository.custom;
 
-public interface PrescriptionDao {
+import entity.PrescriptionEntity;
+import repository.CrudDao;
+
+public interface PrescriptionDao extends CrudDao<PrescriptionEntity,String> {
+
 }

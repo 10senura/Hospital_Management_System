@@ -21,6 +21,7 @@ public class ServiceFactory {
             case DOCTOR: return (T) doctorServiceImpl.getInstance();
             case APPOINTMENT: return (T) appointmentServiceImpl.getInstance();
             case MEDICINE: return (T) medicineServiceImpl.getInstance();
+            case PRESCRIPTION: return (T) prescriptionServiceImpl.getInstance();
             default: return null;
         }
     }

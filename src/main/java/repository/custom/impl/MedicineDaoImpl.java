@@ -12,21 +12,21 @@ import java.util.logging.Logger;
 
 public class MedicineDaoImpl implements MedicineDao {
 
-    private static MedicineDaoImpl medicineDao;
+    private static MedicineDaoImpl medicineDaoImpl;
     private static final Logger LOGGER = Logger.getLogger(MedicineDaoImpl.class.getName());
 
     private MedicineDaoImpl() {
     }
 
     public static MedicineDaoImpl getInstance() {
-        if (medicineDao == null) {
+        if (medicineDaoImpl == null) {
             synchronized (MedicineDaoImpl.class) {
-                if (medicineDao == null) {
-                    medicineDao = new MedicineDaoImpl();
+                if (medicineDaoImpl == null) {
+                    medicineDaoImpl = new MedicineDaoImpl();
                 }
             }
         }
-        return medicineDao;
+        return medicineDaoImpl;
     }
 
     @Override

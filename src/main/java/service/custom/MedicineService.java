@@ -1,12 +1,11 @@
 package service.custom;
 
-import dto.Doctor;
 import dto.Medicine;
-import dto.Patient;
+import service.SuperService;
 
 import java.util.List;
 
-public interface MedicineService {
+public interface MedicineService extends SuperService {
     List<Medicine> getMedicine();
     boolean addMedicine(Medicine medicine);
     Medicine getMedicineBYId(int medicine_id);

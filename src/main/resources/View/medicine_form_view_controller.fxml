@@ -56,15 +56,15 @@
                </image>
             </ImageView>
             <DatePicker layoutX="200.0" layoutY="138.0" promptText="Filter by Date" />
-            <TableView fx:id="tblMedicineView" layoutX="34.0" layoutY="187.0" prefHeight="281.0" prefWidth="702.0" styleClass="table-row-cell" stylesheets="@../css/Table.css">
+            <TableView fx:id="tblMedicineView" layoutX="34.0" layoutY="187.0" prefHeight="281.0" prefWidth="691.0" styleClass="table-row-cell" stylesheets="@../css/Table.css">
                <columns>
                   <TableColumn fx:id="clmMedicineId" prefWidth="70.00000381469727" text="Medicine Id" />
                   <TableColumn fx:id="clmMedicineName" prefWidth="134.6666488647461" text="Name" />
                   <TableColumn fx:id="clmMedicineCategory" prefWidth="105.33332824707031" text="Category " />
                   <TableColumn fx:id="clmMedicineStock" prefWidth="98.66668701171875" text="Stock Quantity " />
                   <TableColumn fx:id="clmMedicinePrice" prefWidth="109.33328247070312" text="Price" />
-                  <TableColumn fx:id="clmMedicineExpireDate" prefWidth="122.666748046875" text="Expiry Date " />
-                  <TableColumn fx:id="clmMidicineDeleteButton" minWidth="0.0" prefWidth="59.99993896484375" />
+                  <TableColumn fx:id="clmMedicineExpireDate" prefWidth="104.0" text="Expiry Date " />
+                  <TableColumn fx:id="clmMidicineDeleteButton" minWidth="0.0" prefWidth="67.33331298828125" />
                </columns>
             </TableView>
             <GenericEditableTableCell layoutX="420.0" layoutY="23.0" prefHeight="45.0" prefWidth="45.0" />
