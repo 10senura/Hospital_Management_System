@@ -27,11 +27,6 @@
                      </font>
                   </Label>
                   <Line endX="-37.666664123535156" layoutX="143.0" layoutY="129.0" startX="-100.0" stroke="#3497f9" strokeWidth="2.0" />
-                  <JFXButton layoutX="636.0" layoutY="440.0" onAction="#btnPatientAddOnAction" prefHeight="33.0" prefWidth="111.0" style="-fx-background-color: #3497f9;" text="Add Patient" textFill="WHITE">
-                     <font>
-                        <Font name="System Bold" size="13.0" />
-                     </font>
-                  </JFXButton>
                   <Label layoutX="47.0" layoutY="178.0" text="Patient Id">
                      <font>
                         <Font size="14.0" />
@@ -116,8 +111,8 @@
                   <Font name="System Bold" size="15.0" />
                </font>
             </Label>
-            <TextField fx:id="txtDosage" layoutX="67.0" layoutY="404.0" prefHeight="34.0" prefWidth="211.0" promptText="Dosage" />
-            <TextField fx:id="txtDuration" layoutX="67.0" layoutY="323.0" prefHeight="34.0" prefWidth="211.0" promptText="Duration" />
+            <TextField fx:id="txtDosage" layoutX="62.0" layoutY="414.0" prefHeight="34.0" prefWidth="211.0" promptText="Dosage" />
+            <TextField fx:id="txtDuration" layoutX="62.0" layoutY="345.0" prefHeight="34.0" prefWidth="211.0" promptText="Duration" />
             <Label layoutX="50.0" layoutY="241.0" text="Doctor Id :">
                <font>
                   <Font name="System Bold" size="15.0" />
@@ -128,18 +123,18 @@
                   <Font name="System Bold" size="15.0" />
                </font>
             </Label>
-            <Label layoutX="49.0" layoutY="374.0" text="Dosage">
+            <Label layoutX="49.0" layoutY="384.0" text="Dosage">
                <font>
                   <Font name="System Bold" size="15.0" />
                </font>
             </Label>
             <Rectangle arcHeight="20.0" arcWidth="20.0" fill="#3497f9" height="42.0" layoutX="518.0" layoutY="81.0" stroke="#3497f9" strokeType="INSIDE" style="-fx-background-color: #3497f9;" width="227.0" />
-            <JFXButton layoutX="667.0" layoutY="85.0" prefHeight="34.0" prefWidth="74.0" style="-fx-background-color: #3497f9;" text="Back" textFill="WHITE">
+            <JFXButton layoutX="667.0" layoutY="85.0" onAction="#btnpreScriptionViewBackOnAction" prefHeight="34.0" prefWidth="74.0" style="-fx-background-color: #3497f9;" text="Back" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="13.0" />
                </font>
             </JFXButton>
-            <JFXButton layoutX="521.0" layoutY="85.0" prefHeight="34.0" prefWidth="148.0" style="-fx-background-color: #3497f9;" text="Update prescription" textFill="WHITE">
+            <JFXButton layoutX="521.0" layoutY="85.0" onAction="#btnUpdatePreScriptionOnAction" prefHeight="34.0" prefWidth="148.0" style="-fx-background-color: #3497f9;" text="Update prescription" textFill="WHITE">
                <font>
                   <Font name="System Bold" size="13.0" />
                </font>
@@ -153,6 +148,17 @@
                   <Font name="System Bold" size="22.0" />
                </font>
             </JFXButton>
+            <Label layoutX="148.0" layoutY="290.0" text="Qty :">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font>
+            </Label>
+            <Label layoutX="50.0" layoutY="314.0" text="Duration :">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font>
+            </Label>
+            <TextField fx:id="txtQty" layoutX="199.0" layoutY="286.0" prefHeight="34.0" prefWidth="77.0" promptText="Qty" />
          </children>
       </AnchorPane>
       <Label layoutX="27.0" layoutY="33.0" text="Doctor Prescription">

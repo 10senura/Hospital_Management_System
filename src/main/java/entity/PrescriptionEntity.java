@@ -10,10 +10,12 @@ import lombok.ToString;
 @NoArgsConstructor
 @ToString
 public class PrescriptionEntity {
-    private String prescription_id;
-    private String patient_id;
-    private String doctor_id;
+    private Integer prescription_id;
+    private Integer patient_id;
+    private Integer doctor_id;
     private String medicine;
     private String dosage;
     private String duration;
+    private Integer qty;
+
 }

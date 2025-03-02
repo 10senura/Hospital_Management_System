@@ -1,4 +1,7 @@
 package repository.custom;
 
-public interface BillingDao {
+import entity.BillingEntity;
+import repository.CrudDao;
+
+public interface BillingDao extends CrudDao<BillingEntity,String> {
 }

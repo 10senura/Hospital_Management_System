@@ -6,7 +6,6 @@ import entity.PatientEntity;
 import entity.PrescriptionEntity;
 import org.modelmapper.ModelMapper;
 import repository.DaoFactory;
-import repository.custom.PatientDao;
 import repository.custom.PrescriptionDao;
 import service.custom.PrescriptionService;
 import util.DaoType;

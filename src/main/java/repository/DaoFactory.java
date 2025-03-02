@@ -25,6 +25,7 @@ public class DaoFactory {
             case APPOINTMENT: return (T) AppointmentDaoImpl.getInstance();
             case MEDICINE: return (T) MedicineDaoImpl.getInstance();
             case PRESCRIPTION: return (T) PrescriptionDaoImpl.getInstance();
+            case BILLING: return (T) BillingDaoImpl.getInstance();
             default: return null;
         }
     }

@@ -5,14 +5,18 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.ToString;
 
+import java.time.LocalDate;
+
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 @ToString
 public class BillingEntity {
-    private String bill_id;
-    private String patient_id;
+    private Integer bill_id;
+    private Integer patient_id;
     private Double total_amount;
     private String payment_status;
-    private String generated_date;
+    private LocalDate generated_date;
+
+
 }
