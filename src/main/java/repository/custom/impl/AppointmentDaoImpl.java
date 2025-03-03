@@ -39,7 +39,7 @@ public class AppointmentDaoImpl implements AppointmentDao {
             statement.setInt(1, entity.getPatient_id());
             statement.setInt(2, entity.getDoctor_id());
             statement.setDate(3, Date.valueOf(entity.getAppointment_date()));
-            statement.setTime(4, Time.valueOf(entity.getAppointment_time().toLocalTime()));
+            statement.setTime(4, Time.valueOf(entity.getAppointment_time()));
 
             boolean result = statement.executeUpdate() > 0;
 
@@ -67,7 +67,7 @@ public class AppointmentDaoImpl implements AppointmentDao {
                             resultSet.getInt("patient_id"),
                             resultSet.getInt("doctor_id"),
                             resultSet.getDate("appointment_date").toLocalDate(),
-                            resultSet.getTime("appointment_time")
+                            resultSet.getTime("appointment_time").toLocalTime()
                     );
                 }
             }
@@ -96,7 +96,9 @@ public class AppointmentDaoImpl implements AppointmentDao {
             statement.setInt(1, entity.getPatient_id());
             statement.setInt(2, entity.getDoctor_id());
             statement.setDate(3, Date.valueOf(entity.getAppointment_date()));
-            statement.setTime(4, Time.valueOf(entity.getAppointment_time().toLocalTime()));
+            statement.setTime(4, Time.valueOf(entity.getAppointment_time()));
+            statement.setInt(5, entity.getAppointment_id());
+
             return statement.executeUpdate() > 0;
         } catch (SQLException e) {
             LOGGER.log(Level.SEVERE, "Error updating appointment: " + entity, e);
@@ -117,7 +119,7 @@ public class AppointmentDaoImpl implements AppointmentDao {
                         resultSet.getInt("patient_id"),
                         resultSet.getInt("doctor_id"),
                         resultSet.getDate("appointment_date").toLocalDate(),
-                        resultSet.getTime("appointment_time")
+                        resultSet.getTime("appointment_time").toLocalTime()
                 ));
             }
         } catch (SQLException e) {

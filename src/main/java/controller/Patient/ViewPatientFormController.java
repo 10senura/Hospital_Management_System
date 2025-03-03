@@ -165,16 +165,4 @@ public class ViewPatientFormController implements Initializable  {
         }
         cmbPatientId.setItems(patientIds);
         }
-
-
-    private void setTextToValues(Patient newValue) {
-        txtpatient_id.setText(String.valueOf(newValue.getPatient_id()));
-        txtpatient_name.setText(newValue.getName());
-        txtpatient_age.setText(String.valueOf(newValue.getAge()));
-        txtpatient_gender.setText(newValue.getGender());
-        txtpatient_contact_D.setText(newValue.getContact_details());
-        txtpatient_emergency_c.setText(newValue.getEmergency_contact());
-        txtpatient_medical_h.setText(newValue.getMedical_history());
-    }
-
 }

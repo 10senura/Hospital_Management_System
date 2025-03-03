@@ -18,6 +18,6 @@ public class Appointment {
     private Integer patient_id;
     private Integer doctor_id;
     private LocalDate appointment_date;
-    private Time appointment_time;
+    private LocalTime appointment_time;
 
 }

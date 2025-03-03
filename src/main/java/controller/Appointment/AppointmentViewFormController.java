@@ -2,6 +2,7 @@ package controller.Appointment;
 
 import com.jfoenix.controls.JFXComboBox;
 import dto.Appointment;
+import dto.Billing;
 import dto.Doctor;
 import dto.Patient;
 import javafx.collections.FXCollections;
@@ -19,6 +20,7 @@ import service.custom.AppointmentService;
 import service.custom.DoctorService;
 import service.custom.PatientService;
 import service.custom.impl.appointmentServiceImpl;
+import service.custom.impl.billingServiceImpl;
 import util.ServiceType;
 import java.sql.Time;
 import java.time.LocalTime;
@@ -27,7 +29,6 @@ import java.time.format.DateTimeFormatter;
 import java.io.IOException;
 import java.net.URL;
 import java.time.LocalDate;
-import java.time.format.DateTimeFormatter;
 import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
@@ -72,27 +73,35 @@ public class AppointmentViewFormController implements Initializable {
     }
 
     public void btnAppomentAddOnAction(ActionEvent actionEvent) {
+        if (cmbPatientId.getValue() == null ||
+                cmbDoctorId.getValue() == null ||
+                txtDate.getValue() == null ||
+                txtTime.getText().isEmpty())
+        {
+            new Alert(Alert.AlertType.WARNING, "Please fill all fields!").show();
+            return;
+        }
+
         try {
-            String timeString = txtTime.getText();
-            LocalTime localTime = LocalTime.parse(timeString, DateTimeFormatter.ofPattern("HH:mm"));
-            Time sqlTime = Time.valueOf(localTime);
+            LocalTime appointmentTime = LocalTime.parse(txtTime.getText(), DateTimeFormatter.ofPattern("HH:mm"));
 
             Appointment appointment = new Appointment(
                     1,
-                    2,
-                    3,
+                    Integer.parseInt(cmbPatientId.getValue()),
+                    Integer.parseInt(cmbDoctorId.getValue()),
                     txtDate.getValue(),
-                    sqlTime
+                    appointmentTime
             );
 
-            if (appointmentService.addAppointment(appointment)) {
-                new Alert(Alert.AlertType.INFORMATION, "Added Successfully!").show();
+            boolean isSaved = appointmentServiceImpl.getInstance().addAppointment(appointment);
+            if (isSaved) {
+                new Alert(Alert.AlertType.INFORMATION, "Appointment saved successfully!").show();
                 loadAppointmentIds();
             } else {
-                new Alert(Alert.AlertType.ERROR, "Added Not Successfully?").show();
+                new Alert(Alert.AlertType.ERROR, "Failed to save Appointment!").show();
             }
         } catch (Exception e) {
-            new Alert(Alert.AlertType.ERROR, "Invalid time format! Please enter time in HH:mm format.").show();
+            new Alert(Alert.AlertType.ERROR, "Invalid time format! Use HH:mm (e.g., 14:30)").show();
         }
     }
 
@@ -106,31 +115,35 @@ public class AppointmentViewFormController implements Initializable {
     }
 
     public void btnUpdateAppointmentOnAction(ActionEvent actionEvent) {
+        if (cmbAppoinementId.getValue() == null) {
+            new Alert(Alert.AlertType.WARNING, "Select an Appointment to update!").show();
+            return;
+        }
+
+        if (txtDate.getValue() == null || txtTime.getText().isEmpty()) {
+            new Alert(Alert.AlertType.WARNING, "Please fill all fields!").show();
+            return;
+        }
+
         try {
-            if (cmbAppoinementId.getValue() == null) {
-                new Alert(Alert.AlertType.WARNING, "Please select an appointment to update!").show();
-                return;
-            }
-            String timeString = txtTime.getText();
-            LocalTime localTime = LocalTime.parse(timeString, DateTimeFormatter.ofPattern("HH:mm"));
-            Time sqlTime = Time.valueOf(localTime);
+            LocalTime appointmentTime = LocalTime.parse(txtTime.getText(), DateTimeFormatter.ofPattern("HH:mm"));
 
             Appointment appointment = new Appointment(
                     Integer.parseInt(cmbAppoinementId.getValue()),
                     Integer.parseInt(cmbPatientId.getValue()),
                     Integer.parseInt(cmbDoctorId.getValue()),
                     txtDate.getValue(),
-                    sqlTime
+                    appointmentTime
             );
 
-            if (appointmentService.updateAppointment(appointment)) {
+            boolean isUpdated = appointmentServiceImpl.getInstance().updateAppointment(appointment);
+            if (isUpdated) {
                 new Alert(Alert.AlertType.INFORMATION, "Appointment updated successfully!").show();
-                loadAppointmentIds();
             } else {
-                new Alert(Alert.AlertType.ERROR, "Update failed! Please try again.").show();
+                new Alert(Alert.AlertType.ERROR, "Failed to update Appointment!").show();
             }
         } catch (Exception e) {
-            new Alert(Alert.AlertType.ERROR, "Invalid time format! Please enter time in HH:mm format.").show();
+            new Alert(Alert.AlertType.ERROR, "Invalid time format! Use HH:mm (e.g., 14:30)").show();
         }
     }
 
